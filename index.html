@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Solicitação de Orçamento - Microgeração Distribuída</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="form-container">
+        <div class="form-header">
+            NT.00020.EQTL.Normas e Qualidade<br>
+            ANEXO I - Formulário de Solicitação de Orçamento de Microgeração Distribuída Grupo B
+        </div>
+
+        <form id="orcamentoForm">
+
+            <!-- Seção 1: Identificação e Dados Cadastrais da Unidade Consumidora -->
+            <div class="section-title">1. Identificação e Dados Cadastrais da Unidade Consumidora - PREENCHER,
+                OBRIGATORIAMENTE, TODOS OS CAMPOS NA COR VERMELHA</div>
+
+            <div class="form-row">
+                <div class="form-group required-field">
+                    <label for="nomeCliente">Nome do Cliente / Razão Social (Titular da Unidade Consumidora)</label>
+                    <input type="text" id="NomeCliente" name="NomeCliente" placeholder="Nome completo ou razão social">
+                </div>
+                <div class="form-group required-field">
+                    <label for="cpfCnpjCliente">CPF/CNPJ</label>
+                    <input type="text" id="CpfCnpjCliente" name="cpfCnpjCliente"
+                        placeholder="000.000.000-00 ou 00.000.000/0000-00">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="rgCliente">RG</label>
+                    <input type="text" id="RGCliente" name="rgCliente" placeholder="Número do documento">
+                </div>
+                <div class="form-group">
+                    <label for="dataExped">DATA EXPEDIÇÃO</label>
+                    <input type="date" id="DataExped" name="dataExped">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group required-field">
+                    <label for="enderecoCliente">Endereço</label>
+                    <input type="text" id="EnderecoCliente" name="enderecoCliente" placeholder="Endereço completo">
+                </div>
+                <div class="form-group required-field">
+                    <label for="cepCliente">CEP</label>
+                    <input type="text" id="CEPCliente" name="cepCliente" placeholder="00000-000">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group required-field">
+                    <label for="cidadeCliente">Município</label>
+                    <input type="text" id="Municipio" name="cidadeCliente" placeholder="Nome do município">
+                </div>
+                <div class="form-group required-field">
+                    <label for="ufCliente">UF</label>
+                    <select id="UF" name="ufCliente">
+                        <option value="">Selecione</option>
+                        <option value="PA">PA</option>
+                        <option value="MA">MA</option>
+                        <option value="PI">PI</option>
+                        <option value="AL">AL</option>
+                        <option value="RS">RS</option>
+                        <option value="AP">AP</option>
+                        <option value="GO">GO</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="celularCliente">Celular</label>
+                    <input type="text" id="Celular" name="celularCliente" placeholder="(00) 00000-0000">
+                </div>
+                <div class="form-group">
+                    <label for="telefoneFixo">Fixo</label>
+                    <input type="text" id="Fixo" name="telefoneFixo" placeholder="(00) 0000-0000">
+                </div>
+                <div class="form-group">
+                    <label for="emailCliente">E-mail</label>
+                    <input type="email" id="email" name="emailCliente" placeholder="email@exemplo.com">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="tipoOrcamento">Tipo de orçamento desejado</label>
+                    <select id="TipoOrçamento" name="tipoOrcamento">
+                        <option value="">Selecione</option>
+                        <option value="Orçamento de Conexão">Orçamento de Conexão</option>
+                        <option value="Orçamento Estimado">Orçamento Estimado</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="contaContrato">Conta Contrato (Se UC existente)</label>
+                    <input type="text" id="ContaContrato" name="contaContrato" placeholder="Número da conta contrato">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="tipoSolicitacao">Tipo de Solicitação</label>
+                    <select id="TipoSolicitacao" name="tipoSolicitacao">
+                        <option value="">Selecione</option>
+                        <option value="LIGAÇÃO NOVA DE UNIDADE CONSUMIDORA COM GERAÇÃO DISTRIBUÍDA">LIGAÇÃO NOVA DE
+                            UNIDADE CONSUMIDORA COM GERAÇÃO DISTRIBUÍDA</option>
+                        <option
+                            value="CONEXÃO DE GD EM UNIDADE CONSUMIDORA EXISTENTE SEM AUMENTO DE POTÊNCIA DISPONIBILIZADA">
+                            CONEXÃO DE GD EM UNIDADE CONSUMIDORA EXISTENTE SEM AUMENTO DE
+                            POTÊNCIA DISPONIBILIZADA</option>
+                        <option
+                            value="CONEXÃO DE GD EM UNIDADE CONSUMIDORA EXISTENTE COM AUMENTO DE POTÊNCIA DISPONIBILIZADA">
+                            CONEXÃO DE GD EM UNIDADE CONSUMIDORA EXISTENTE COM AUMENTO DE
+                            POTÊNCIA DISPONIBILIZADA</option>
+                        <option
+                            value="AUMENTO DA POTÊNCIA DE GERAÇÃO EM UC COM GD EXISTENTE SEM AUMENTO DE POTÊNCIA DISPONIBILIZADA">
+                            AUMENTO DA POTÊNCIA DE GERAÇÃO EM UC COM GD EXISTENTE SEM
+                            AUMENTO DE POTÊNCIA DISPONIBILIZADA</option>
+                        <option
+                            value="AUMENTO DA POTÊNCIA DE GERAÇÃO EM UC COM GD EXISTENTE COM AUMENTO DE POTÊNCIA DISPONIBILIZADA">
+                            AUMENTO DA POTÊNCIA DE GERAÇÃO EM UC COM GD EXISTENTE COM
+                            AUMENTO DE POTÊNCIA DISPONIBILIZADA</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="cargasEspeciais">Possui Cargas Especiais?</label>
+                    <select id="CargasEspeciais" name="cargasEspeciais">
+                        <option value="NÃO">NÃO</option>
+                        <option value="SIM">SIM</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="detalheCargas">Detalhar - Cargas especiais</label>
+                    <input type="text" id="detalheCargas" name="detalheCargas"
+                        placeholder="Detalhe as cargas especiais">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="ramoAtividade">Ramo de Atividade (Descrição)</label>
+                    <input type="text" id="ramoAtividade" name="ramoAtividade"
+                        placeholder="Descrição do ramo de atividade">
+                </div>
+                <div class="form-group">
+                    <label for="classe">Classe</label>
+                    <select id="Classe" name="classe">
+                        <option value="Residencial">Residencial</option>
+                        <option value="Industrial">Industrial</option>
+                        <option value="Comércio, serviços e outras atividades">Comércio, serviços e outras atividades
+                        </option>
+                        <option value="Rural">Rural</option>
+                        <option value="Poder Público">Poder Público</option>
+                        <option value="Iluminação Pública">Iluminação Pública</option>
+                        <option value="Serviço Público">Serviço Público</option>
+                        <option value="Consumo Próprio">Consumo próprio</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="SecaoCondutorCC">SEÇÃO DO CONDUTOR CC</label>
+                    <select id="SecaoCondutorCC" name="SecaoCondutorCC">
+                        <option value="4 mm²">4 mm²</option>
+                        <option value="6 mm²">6 mm²</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                <label for="SecaoCondutorCA">SEÇÃO DO CONDUTOR CA</label>
+                <select id="SecaoCondutorCA" name="SecaoCondutorCA">
+                        <option value="4 mm²">4 mm²</option>
+                        <option value="6 mm²">6 mm²</option>
+                        <option value="10 mm²">10 mm²</option>
+                        <option value="16 mm²">16 mm²</option>
+                        <option value="25 mm²">25 mm²</option>
+                        <option value="35 mm²">35 mm²</option>
+                        <option value="50 mm²">50 mm²</option>
+                        <option value="70 mm²">70 mm²</option>
+                        <option value="95 mm²">95 mm²</option>
+                        <option value="120 mm²">120 mm²</option>
+                        <option value="150 mm²">150 mm²</option>
+                        <option value="185 mm²">185 mm²</option>
+                        <option value="240 mm²">240 mm²</option>
+                        <option value="300 mm²">300 mm²</option>
+                        <option value="400 mm²">400 mm²</option>
+                        <option value="500 mm²">500 mm²</option>
+                </select>
+                </div>
+                <div class="form-group">
+                    <label for="TensaoIsolacao">Tensão de Isolação</label>
+                    <select id="TensaoIsolacao" name="TensaoIsolacao">
+                        <option value="750 V">750 V</option>
+                        <option value="1 kV">1 kV</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="tipoLigacao">Tipo de Ligação</label>
+                    <select id="TipoLigacao" name="tipoLigacao">
+                        <option value="MONOFÁSICO">MONOFÁSICO</option>
+                        <option value="BIFÁSICO">BIFÁSICO</option>
+                        <option value="TRIFÁSICO">TRIFÁSICO</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="tensaoAtendimento">Tensão de Atendimento da UC</label>
+                    <select id="TensaoAtendimento" name="tensaoAtendimento">
+                        <option value="127">127 V</option>
+                        <option value="220">220 V</option>
+                        <option value="380">380 V</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="CargaDeclarada">Carga Declarada da UC</label>
+                    <input type="number" id="CargaDeclarada" name="cargaDeclarada" placeholder="0.00" step="0.01">
+                    <span class="info-text">kW</span>
+                </div>
+                <div class="form-group">
+                    <label for="CargaDeclarada">Potência Disponibilizada (PD)</label>
+                    <input type="number" id="PotenciaDisponibilizada" name="PotenciaDisponibilizada" placeholder="0.00" step="0.01">
+                    <span class="info-text">kW</span>
+                </div>
+                <div class="form-group">
+                    <label for="disjuntorEntrada">Disjuntor de Entrada da UC</label>
+                    <select id="DisjuntorEntrada" name="disjuntorEntrada">
+                        <option value="30 A">30 A</option>
+                        <option value="32 A">32 A</option>
+                        <option value="40 A">40 A</option>
+                        <option value="50 A">50 A</option>
+                        <option value="63 A">63 A</option>
+                        <option value="70 A">70 A</option>
+                        <option value="80 A">80 A</option>
+                        <option value="125 A">125 A</option>
+                        <option value="200 A">200 A</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="tipoRamal">Tipo de Ramal</label>
+                    <select id="TipoRamal" name="tipoRamal">
+                        <option value="AÉREO">AÉREO</option>
+                        <option value="SUBTERRÂNEO'">SUBTERRÂNEO</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="identificacaoPoste">Nº de identificação do poste ou transformador mais próximo</label>
+                    <input type="text" id="identificacaoPoste" name="identificacaoPoste" placeholder="Identificação">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group coordinate-field">
+                    <label for="coordenadaX">Coordenada X</label>
+                    <input type="text" id="UFx" name="coordenadaX" placeholder="792364.06 m E">
+                </div>
+                <div class="form-group coordinate-field">
+                    <label for="coordenadaY">Coordenada Y</label>
+                    <input type="text" id="UFy" name="coordenadaY" placeholder="9852170.30 m S">
+                </div>
+            </div>
+
+            <!-- Seção 2: Dados Cadastrais do Responsável Técnico -->
+            <div class="section-title">2. Dados Cadastrais do Responsável Técnico</div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nomeTecnico">Nome Completo</label>
+                    <input type="text" id="NomeTecnico" name="nomeTecnico" placeholder="Nome do responsável técnico">
+                </div>
+                <div class="form-group">
+                    <label for="tituloTecnico">Título Profissional</label>
+                    <input type="text" id="TituloTecnico" name="tituloTecnico" placeholder="Título profissional">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="RegistroTecnico">Registro Profissional - Nº</label>
+                    <input type="text" id="RegistroTecnico" name="registroTecnico" placeholder="Número do registro">
+                </div>
+                <div class="form-group">
+                    <label for="ufTecnico">UF</label>
+                    <select id="UfTecnico" name="ufTecnico">
+                        <option value="">Selecione</option>
+                        <option value="PA">PA</option>
+                        <option value="MA">MA</option>
+                        <option value="PI">PI</option>
+                        <option value="AL">AL</option>
+                        <option value="RS">RS</option>
+                        <option value="AP">AP</option>
+                        <option value="GO">GO</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="emailTecnico">E-mail</label>
+                    <input type="email" id="EmailTecnico" name="emailTecnico" placeholder="email@exemplo.com">
+                </div>
+                <div class="form-group">
+                    <label for="telefoneFixoTecnico">Telefone Fixo</label>
+                    <input type="text" id="TelefoneTecnico" name="telefoneFixoTecnico" placeholder="(00) 0000-0000">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="celularTecnico">Telefone Celular</label>
+                    <input type="text" id="CelularTecnico" name="celularTecnico" placeholder="(00) 00000-0000">
+                </div>
+                <div class="form-group">
+                    <label for="faxTecnico">Fax</label>
+                    <input type="text" id="faxTecnico" name="faxTecnico" placeholder="(00) 0000-0000">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="enderecoTecnico">Endereço de Correspondência</label>
+                    <input type="text" id="EnderecoTecnico" name="enderecoTecnico" placeholder="Endereço completo">
+                </div>
+                <div class="form-group">
+                    <label for="bairroTecnico">Bairro</label>
+                    <input type="text" id="BairroTecnico" name="bairroTecnico" placeholder="Nome do bairro">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="cidadeTecnico">Município</label>
+                    <input type="text" id="MunicipioTecnico" name="cidadeTecnico" placeholder="Nome do município">
+                </div>
+                <div class="form-group">
+                    <label for="ufTecnicoEndereco">UF</label>
+                    <select id="UfTecnico2" name="ufTecnicoEndereco">
+                        <option value="">Selecione</option>
+                        <option value="PA">PA</option>
+                        <option value="MA">MA</option>
+                        <option value="PI">PI</option>
+                        <option value="AL">AL</option>
+                        <option value="RS">RS</option>
+                        <option value="AP">AP</option>
+                        <option value="GO">GO</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="cepTecnico">CEP</label>
+                    <input type="text" id="CEPTecnico" name="cepTecnico" placeholder="00000-000">
+                </div>
+            </div>
+
+            <!-- Seção 3: Características da Microgeração Distribuída -->
+            <div class="section-title">3. Características da Microgeração Distribuída</div>
+
+            <div class="instructions">
+                <strong>Dados Gerais da Central Geradora</strong>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="tipoFontePrimaria">Tipo de Fonte Primária</label>
+                    <select id="TipoFontePrimaria" name="tipoFontePrimaria">
+                        <option value="SOLAR FOTOVOLTAICA">SOLAR FOTOVOLTAICA</option>
+                        <option value="EÓLICA">EÓLICA</option>
+                        <option value="HIDRÁULICA">HIDRÁULICA</option>
+                        <option value="BIOMASSA (especificar ao lado o tipo de fonte primária)">BIOMASSA (especificar ao
+                            lado o tipo de fonte primária)</option>
+                        <option value="COGERAÇÃO QUALIFICADA">COGERAÇÃO QUALIFICADA</option>
+                        <option value="HÍBRIDO (indicar potência total ao lado)">HÍBRIDO (indicar potência total ao
+                            lado)</option>
+                        <option value="OUTRAS (especificar ao lado)">OUTRAS (especificar ao lado)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="especificacaoFonte">Especificar se necessário</label>
+                    <input type="text" id="especificacaoFonte" name="especificacaoFonte"
+                        placeholder="Especificações adicionais">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="TipoGeracao">Tipo de Geração</label>
+                    <select id="TipoGeracao" name="tipoGeracao">
+                        <option value="EMPREGANDO MÁQUINA SÍNCRONA SEM CONVERSOR">EMPREGANDO MÁQUINA SÍNCRONA SEM
+                            CONVERSOR</option>
+                        <option value="EMPREGANDO CONVERSOR ELETRÔNICO/INVERSOR">EMPREGANDO CONVERSOR
+                            ELETRÔNICO/INVERSOR</option>
+                        <option value="MISTA">MISTA</option>
+                        <option value="OUTRA (especificar ao lado)">OUTRA (especificar ao lado)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="especificacaoGeracao">Especificar se necessário</label>
+                    <input type="text" id="especificacaoGeracao" name="especificacaoGeracao"
+                        placeholder="Especificações adicionais">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="modalidadeCompensacao">Modalidade de Compensação</label>
+                    <select id="ModalidadeCompensacao" name="modalidadeCompensacao">
+                        <option value="AUTOCONSUMO LOCAL">AUTOCONSUMO LOCAL</option>
+                        <option value="AUTOCONSUMO REMOTO">AUTOCONSUMO REMOTO</option>
+                        <option value="GERAÇÃO COMPARTILHADA">GERAÇÃO COMPARTILHADA</option>
+                        <option value="EMPREENDIMENTO DE MÚLTIPLAS UNIDADES CONSUMIDORAS">EMPREENDIMENTO DE MÚLTIPLAS
+                            UNIDADES CONSUMIDORAS</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="potenciaGeracaoOrcamento">Potência Geração do Orçamento</label>
+                    <input type="number" id="potenciaGeracaoOrcamento" name="potenciaGeracaoOrcamento"
+                        placeholder="0.00" step="0.01">
+                    <span class="info-text">kW</span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="potenciaGeracaoTotal">Potência Geração Total da UC(PGT)</label>
+                    <input type="number" id="potenciaGeracaoTotal" name="potenciaGeracaoTotal" placeholder="0.00"
+                        step="0.01">
+                    <span class="info-text">kW</span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="armazenamento">Armazenamento (se houver)</label>
+                    <input type="text" id="Armazenamento" name="armazenamento"
+                        placeholder="Informações sobre armazenamento">
+                </div>
+                <div class="form-group">
+                    <label for="potenciaMaximaInjetavel">Potência Máxima Injetável (se aplicável)</label>
+                    <input type="number" id="potenciaMaximaInjetavel" name="potenciaMaximaInjetavel" placeholder="0.00"
+                        step="0.01">
+                    <span class="info-text">kW</span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="dataInicioOperacao">Data Início de Operação</label>
+                    <input type="date" id="dataInicioOperacao" name="dataInicioOperacao">
+                </div>
+                <div class="form-group">
+                    <label for="statusProjeto">Status do Projeto</label>
+                    <select id="statusProjeto" name="statusProjeto">
+                        <option value="EM PROJETO">EM PROJETO</option>
+                        <option value="EM EXECUÇÃO">EM EXECUÇÃO</option>
+                        <option value="CONCLUÍDO">CONCLUÍDO</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Seção de Informações das Unidades Geradoras -->
+            <div class="section-title">Informações das Unidades Geradoras (UG): (PREENCHER CONFORME O TIPO DE FONTE DE
+                GERAÇÃO)</div>
+
+            <!-- 1. Solar Fotovoltaica -->
+            <div class="ug-section">
+                <h3>1. Solar Fotovoltaica</h3>
+        <div class="compact-fields">
+                <div class="form-group">
+                <label for="Voc">Tensão de circuito aberto (Voc) [V]</label>
+                <input type="text" id="VocModulo" name="Voc" step="0.01">
+                </div>
+
+                <div class="form-group">
+                <label for="Isc">Corrente de curto-circuito (Isc) [A]</label>
+                <input type="text" id="IscModulo" name="Isc" step="0.01">
+                </div>
+
+                <div class="form-group">
+                <label for="Vpmp">Tensão de max potência (Vpmp) [V]</label>
+                <input type="text" id="VpmpModulo" name="Vpmp" step="0.01">
+                </div>
+
+                <div class="form-group">
+                <label for="Ipmp">Corrente de max potência (Ipmp) [A]</label>
+                <input type="text" id="IpmpModulo" name="Ipmp" step="0.01">
+                </div>
+
+                <div class="form-group">
+                <label for="Eficiencia">Eficiência [%]</label>
+                <input type="text" id="EficienciaModulo" name="Eficiencia" step="0.01">
+                </div>
+
+                <div class="form-group">
+                <label for="Dimensoes">Dimensões [mm]</label>
+                <input type="text" id="DimensoesModulo" name="Dimensoes">
+                </div>
+
+                <div class="form-group">
+                <label for="Peso">Peso [kg]</label>
+                <input type="text" id="PesoModulo" name="Peso" step="0.01">
+                </div>
+        </div>
+                <div class="table-container">
+
+                    <table class="ug-table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Potência do Módulo (W)</th>
+                                <th>Quantidade</th>
+                                <th>Potência de Pico (kWp)</th>
+                                <th>Área do arranjo (m²)</th>
+                                <th>Fabricante(s) dos Módulos</th>
+                                <th>Modelo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><input type="text" id="PotenciaModulo1" name="PotenciaModulo1" placeholder="W">
+                                </td>
+                                <td><input type="text" id="QuantidadeValor1" name="QuantidadeValor1"
+                                        placeholder="Qtd"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValor1" name="PotenciaValor1"
+                                        placeholder="kWp"></td>
+                                <td><input type="text" step="0.01" id="AreaValor1" name="AreaValor1" placeholder="m²">
+                                </td>
+                                <td><input type="text" id="FabricanteModulo1" name="FabricanteModulo1"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloModulo1" name="ModeloModulo1" placeholder="Modelo">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><input type="text" id="PotenciaModulo2" name="PotenciaModulo2" placeholder="W">
+                                </td>
+                                <td><input type="text" id="QuantidadeValor2" name="QuantidadeValor2"
+                                        placeholder="Qtd"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValor2" name="PotenciaValor2"
+                                        placeholder="kWp"></td>
+                                <td><input type="text" step="0.01" id="AreaValor2" name="AreaValor2" placeholder="m²">
+                                </td>
+                                <td><input type="text" id="FabricanteModulo2" name="FabricanteModulo2"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloModulo2" name="ModeloModulo2" placeholder="Modelo">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td><input type="text" id="PotenciaModulo3" name="PotenciaModulo3" placeholder="W">
+                                </td>
+                                <td><input type="text" id="QuantidadeValor3" name="QuantidadeValor3"
+                                        placeholder="Qtd"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValor3" name="PotenciaValor3"
+                                        placeholder="kWp"></td>
+                                <td><input type="text" step="0.01" id="AreaValor3" name="AreaValor3" placeholder="m²">
+                                </td>
+                                <td><input type="text" id="FabricanteModulo3" name="FabricanteModulo3"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloModulo3" name="ModeloModulo3" placeholder="Modelo">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td><input type="text" id="PotenciaModulo4" name="PotenciaModulo4" placeholder="W">
+                                </td>
+                                <td><input type="text" id="QuantidadeValor4" name="QuantidadeValor4"
+                                        placeholder="Qtd"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValor4" name="PotenciaValor4"
+                                        placeholder="kWp"></td>
+                                <td><input type="text" step="0.01" id="AreaValor4" name="AreaValor4" placeholder="m²">
+                                </td>
+                                <td><input type="text" id="FabricanteModulo4" name="FabricanteModulo4"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloModulo4" name="ModeloModulo4" placeholder="Modelo">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td><input type="text" id="PotenciaModulo5" name="PotenciaModulo5" placeholder="W">
+                                </td>
+                                <td><input type="text" id="QuantidadeValor5" name="QuantidadeValor5"
+                                        placeholder="Qtd"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValor5" name="PotenciaValor5"
+                                        placeholder="kWp"></td>
+                                <td><input type="text" step="0.01" id="AreaValor5" name="AreaValor5" placeholder="m²">
+                                </td>
+                                <td><input type="text" id="FabricanteModulo5" name="FabricanteModulo5"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloModulo5" name="ModeloModulo5" placeholder="Modelo">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td><input type="text" id="PotenciaModulo6" name="PotenciaModulo6" placeholder="W">
+                                </td>
+                                <td><input type="text" id="QuantidadeValor6" name="QuantidadeValor6"
+                                        placeholder="Qtd"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValor6" name="PotenciaValor6"
+                                        placeholder="kWp"></td>
+                                <td><input type="text" step="0.01" id="AreaValor6" name="AreaValor6" placeholder="m²">
+                                </td>
+                                <td><input type="text" id="FabricanteModulo6" name="FabricanteModulo6"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloModulo6" name="ModeloModulo6" placeholder="Modelo">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td><input type="text" id="PotenciaModulo7" name="PotenciaModulo7" placeholder="W">
+                                </td>
+                                <td><input type="text" id="QuantidadeValor7" name="QuantidadeValor7"
+                                        placeholder="Qtd"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValor7" name="PotenciaValor7"
+                                        placeholder="kWp"></td>
+                                <td><input type="text" step="0.01" id="AreaValor7" name="AreaValor7" placeholder="m²">
+                                </td>
+                                <td><input type="text" id="FabricanteModulo7" name="FabricanteModulo7"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloModulo7" name="ModeloModulo7" placeholder="Modelo">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td><input type="text" id="PotenciaModulo8" name="PotenciaModulo8" placeholder="W">
+                                </td>
+                                <td><input type="text" id="QuantidadeValor8" name="QuantidadeValor8"
+                                        placeholder="Qtd"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValor8" name="PotenciaValor8"
+                                        placeholder="kWp"></td>
+                                <td><input type="text" step="0.01" id="AreaValor8" name="AreaValor8" placeholder="m²">
+                                </td>
+                                <td><input type="text" id="FabricanteModulo8" name="FabricanteModulo8"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloModulo8" name="ModeloModulo8" placeholder="Modelo">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td><input type="text" id="PotenciaModulo9" name="PotenciaModulo9" placeholder="W">
+                                </td>
+                                <td><input type="text" id="QuantidadeValor9" name="QuantidadeValor9"
+                                        placeholder="Qtd"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValor9" name="PotenciaValor9"
+                                        placeholder="kWp"></td>
+                                <td><input type="text" step="0.01" id="AreaValor9" name="AreaValor9" placeholder="m²">
+                                </td>
+                                <td><input type="text" id="FabricanteModulo9" name="FabricanteModulo9"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloModulo9" name="ModeloModulo9" placeholder="Modelo">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td><input type="text" id="PotenciaModulo10" name="PotenciaModulo10" placeholder="W">
+                                </td>
+                                <td><input type="text" id="QuantidadeValor10" name="QuantidadeValor10"
+                                        placeholder="Qtd"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValor10" name="PotenciaValor10"
+                                        placeholder="kWp"></td>
+                                <td><input type="text" step="0.01" id="AreaValor10" name="AreaValor10"
+                                        placeholder="m²"></td>
+                                <td><input type="text" id="FabricanteModulo10" name="FabricanteModulo10"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloModulo10" name="ModeloModulo10" placeholder="Modelo">
+                                </td>
+                            </tr>
+                            </tfoot>
+                            <tfoot>
+                            <tr>
+                                <td>TOTAL</td>
+                                <td></td>
+                                <td><input type="text" step="0.01" id="Quantidade" name="quantidadeTotal" placeholder="Qtd Total"></td>
+                                <td><input type="text" step="0.01" id="PotenciaPico" name="potenciaPicoTotal" placeholder="Total kWp"></td>
+                                <td><input type="text" step="0.01" id="AreaModulo" name="areaArranjoTotal" placeholder="Total m²"></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <p class="table-note">Obs: Célula fotovoltaica é a unidade básica, módulo é o conjunto de células e
+                    arranjo é o agrupamento de módulos, o gerador</p>
+            </div>
+
+            <!-- 2. Dados dos Inversores -->
+            <div class="ug-section">
+                <h3>2. Dados dos Inversores</h3>
+
+                <div class="compact-fields">
+                <div class="form-group">
+                        <label for="PmaxCC">Máxima potência na entrada CC – Pmax-cc [kW]</label>
+                        <input type="text" id="PmaxCCInversor" name="PmaxCC">
+                </div>
+
+                <div class="form-group">
+                        <label for="VccMax">Máxima tensão CC – Vcc-máx [V]</label>
+                        <input type="text" id="VccMaxInversor" name="VccMax">
+                </div>
+
+                <div class="form-group">
+                        <label for="IccMax">Máxima corrente MPPT CC – Icc-máx [A]</label>
+                        <input type="text" id="IccMaxInversor" name="IccMax">
+                </div>
+
+                <div class="form-group">
+                        <label for="VpmpMPPT">Faixa de tensão MPPT – Vpmp [V]</label>
+                        <input type="text" id="VpmpMPPTInversor" name="VpmpMPPT">
+                </div>
+
+                <div class="form-group">
+                        <label for="VccPart">Tensão CC de partida – Vcc-part [V]</label>
+                        <input type="text" id="VccPartInversor" name="VccPart">
+                </div>
+
+                <div class="form-group">
+                        <label for="QtdEntradasMPPT">Quantidade de entradas MPPT</label>
+                        <input type="text" id="QtdEntradasMPPTInversor" name="QtdEntradasMPPT">
+                </div>
+
+                <div class="form-group">
+                        <label for="StringsMPPT">Strings por MPPT</label>
+                        <input type="text" id="StringsMPPTInversor" name="StringsMPPT">
+                </div>
+
+                <div class="form-group">
+                        <label for="FrequenciaNominal">Frequência nominal – Fn [Hz]</label>
+                        <input type="text" id="FrequenciaNominalInversor" name="FrequenciaNominal">
+                </div>
+
+                <div class="form-group">
+                        <label for="EficienciaMaxima">Eficiência máxima [%]</label>
+                        <input type="text" id="EficienciaMaximaInversor" name="EficienciaMaxima">
+                </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="ug-table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Fabricante*</th>
+                                <th>Modelo*</th>
+                                <th>Potência Nominal (kW)</th>
+                                <th>Faixa de tensão de operação (V)</th>
+                                <th>Corrente Nominal (A)</th>
+                                <th>Fator de Potência</th>
+                                <th>Rendimento (%)</th>
+                                <th>DHT de Corrente (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Linhas para inversores (10) -->
+                            <tr>
+                                <td>1</td>
+                                <td><input type="text" id="FabricanteInversor1" name="FabricanteInversor1"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor1" name="ModeloInversor1" placeholder="Modelo">
+                                </td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor1"
+                                        name="PotenciaValorInversor1" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor1" name="FaixaTensaoInversor1"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor1"
+                                        name="CorrenteNominalInversor1" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor1" name="FPInversor1" placeholder="FP">
+                                </td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor1" name="RendimentoInversor1"
+                                        placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor1" name="DHTInversor1"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><input type="text" id="FabricanteInversor2" name="FabricanteInversor2"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor2" name="ModeloInversor2" placeholder="Modelo">
+                                </td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor2"
+                                        name="PotenciaValorInversor2" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor2" name="FaixaTensaoInversor2"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor2"
+                                        name="CorrenteNominalInversor2" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor2" name="FPInversor2" placeholder="FP">
+                                </td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor2" name="RendimentoInversor2"
+                                        placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor2" name="DHTInversor2"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td><input type="text" id="FabricanteInversor3" name="FabricanteInversor3"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor3" name="ModeloInversor3" placeholder="Modelo">
+                                </td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor3"
+                                        name="PotenciaValorInversor3" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor3" name="FaixaTensaoInversor3"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor3"
+                                        name="CorrenteNominalInversor3" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor3" name="FPInversor3" placeholder="FP">
+                                </td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor3" name="RendimentoInversor3"
+                                        placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor3" name="DHTInversor3"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td><input type="text" id="FabricanteInversor4" name="FabricanteInversor4"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor4" name="ModeloInversor4" placeholder="Modelo">
+                                </td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor4"
+                                        name="PotenciaValorInversor4" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor4" name="FaixaTensaoInversor4"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor4"
+                                        name="CorrenteNominalInversor4" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor4" name="FPInversor4" placeholder="FP">
+                                </td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor4" name="RendimentoInversor4"
+                                        placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor4" name="DHTInversor4"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td><input type="text" id="FabricanteInversor5" name="FabricanteInversor5"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor5" name="ModeloInversor5" placeholder="Modelo">
+                                </td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor5"
+                                        name="PotenciaValorInversor5" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor5" name="FaixaTensaoInversor5"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor5"
+                                        name="CorrenteNominalInversor5" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor5" name="FPInversor5" placeholder="FP">
+                                </td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor5" name="RendimentoInversor5"
+                                        placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor5" name="DHTInversor5"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td><input type="text" id="FabricanteInversor6" name="FabricanteInversor6"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor6" name="ModeloInversor6" placeholder="Modelo">
+                                </td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor6"
+                                        name="PotenciaValorInversor6" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor6" name="FaixaTensaoInversor6"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor6"
+                                        name="CorrenteNominalInversor6" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor6" name="FPInversor6" placeholder="FP">
+                                </td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor6" name="RendimentoInversor6"
+                                        placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor6" name="DHTInversor6"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td><input type="text" id="FabricanteInversor7" name="FabricanteInversor7"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor7" name="ModeloInversor7" placeholder="Modelo">
+                                </td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor7"
+                                        name="PotenciaValorInversor7" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor7" name="FaixaTensaoInversor7"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor7"
+                                        name="CorrenteNominalInversor7" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor7" name="FPInversor7" placeholder="FP">
+                                </td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor7" name="RendimentoInversor7"
+                                        placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor7" name="DHTInversor7"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td><input type="text" id="FabricanteInversor8" name="FabricanteInversor8"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor8" name="ModeloInversor8" placeholder="Modelo">
+                                </td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor8"
+                                        name="PotenciaValorInversor8" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor8" name="FaixaTensaoInversor8"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor8"
+                                        name="CorrenteNominalInversor8" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor8" name="FPInversor8" placeholder="FP">
+                                </td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor8" name="RendimentoInversor8"
+                                        placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor8" name="DHTInversor8"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td><input type="text" id="FabricanteInversor9" name="FabricanteInversor9"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor9" name="ModeloInversor9" placeholder="Modelo">
+                                </td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor9"
+                                        name="PotenciaValorInversor9" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor9" name="FaixaTensaoInversor9"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor9"
+                                        name="CorrenteNominalInversor9" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor9" name="FPInversor9" placeholder="FP">
+                                </td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor9" name="RendimentoInversor9"
+                                        placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor9" name="DHTInversor9"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td><input type="text" id="FabricanteInversor10" name="FabricanteInversor10"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor10" name="ModeloInversor10"
+                                        placeholder="Modelo"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor10"
+                                        name="PotenciaValorInversor10" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor10" name="FaixaTensaoInversor10"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor10"
+                                        name="CorrenteNominalInversor10" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor10" name="FPInversor10"
+                                        placeholder="FP"></td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor10" name="RendimentoInversor10"
+                                        placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor10" name="DHTInversor10"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td><input type="text" id="FabricanteInversor11" name="FabricanteInversor11"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor11" name="ModeloInversor11"
+                                        placeholder="Modelo"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor11"
+                                        name="PotenciaValorInversor11" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor11" name="FaixaTensaoInversor11"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor11"
+                                        name="CorrenteNominalInversor11" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor11" name="FPInversor11"
+                                        placeholder="FP"></td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor11" name="RendimentoInversor11"
+                                        placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor11" name="DHTInversor11"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td><input type="text" id="FabricanteInversor12" name="FabricanteInversor12"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor12" name="ModeloInversor12"
+                                        placeholder="Modelo"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor12"
+                                        name="PotenciaValorInversor12" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor12" name="FaixaTensaoInversor12"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor12"
+                                        name="CorrenteNominalInversor12" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor12" name="FPInversor12"
+                                        placeholder="FP"></td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor12" name="RendimentoInversor12"
+                                        placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor12" name="DHTInversor12"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td><input type="text" id="FabricanteInversor13" name="FabricanteInversor13"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor13" name="ModeloInversor13"
+                                        placeholder="Modelo"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor13"
+                                        name="PotenciaValorInversor13" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor13" name="FaixaTensaoInversor13"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor13"
+                                        name="CorrenteNominalInversor13" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor13" name="FPInversor13"
+                                        placeholder="FP"></td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor13" name="RendimentoInversor13"
+                                        placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor13" name="DHTInversor13"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td><input type="text" id="FabricanteInversor14" name="FabricanteInversor14"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor14" name="ModeloInversor14"
+                                        placeholder="Modelo"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor14"
+                                        name="PotenciaValorInversor14" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor14" name="FaixaTensaoInversor14"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor14"
+                                        name="CorrenteNominalInversor14" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor14" name="FPInversor14"
+                                        placeholder="FP"></td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor14" name="RendimentoInversor14"
+                                        placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor14" name="DHTInversor14"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td><input type="text" id="FabricanteInversor15" name="FabricanteInversor15"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor15" name="ModeloInversor15"
+                                        placeholder="Modelo"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor15"
+                                        name="PotenciaValorInversor15" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor15" name="FaixaTensaoInversor15"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor15"
+                                        name="CorrenteNominalInversor15" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor15" name="FPInversor15"
+                                        placeholder="FP"></td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor15" name="RendimentoInversor15"
+                                        placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor15" name="DHTInversor15"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td><input type="text" id="FabricanteInversor16" name="FabricanteInversor16"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor16" name="ModeloInversor16"
+                                        placeholder="Modelo"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor16"
+                                        name="PotenciaValorInversor16" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor16" name="FaixaTensaoInversor16"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor16"
+                                        name="CorrenteNominalInversor16" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor16" name="FPInversor16"
+                                        placeholder="FP"></td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor16" name="RendimentoInversor16"
+                                        placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor16" name="DHTInversor16"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>17</td>
+                                <td><input type="text" id="FabricanteInversor17" name="FabricanteInversor17"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor17" name="ModeloInversor17"
+                                        placeholder="Modelo"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor17"
+                                        name="PotenciaValorInversor17" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor17" name="FaixaTensaoInversor17"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor17"
+                                        name="CorrenteNominalInversor17" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor17" name="FPInversor17"
+                                        placeholder="FP"></td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor17" name="RendimentoInversor17"
+                                        placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor17" name="DHTInversor17"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>18</td>
+                                <td><input type="text" id="FabricanteInversor18" name="FabricanteInversor18"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor18" name="ModeloInversor18"
+                                        placeholder="Modelo"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor18"
+                                        name="PotenciaValorInversor18" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor18" name="FaixaTensaoInversor18"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor18"
+                                        name="CorrenteNominalInversor18" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor18" name="FPInversor18"
+                                        placeholder="FP"></td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor18" name="RendimentoInversor18"
+                                        placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor18" name="DHTInversor18"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>19</td>
+                                <td><input type="text" id="FabricanteInversor19" name="FabricanteInversor19"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor19" name="ModeloInversor19"
+                                        placeholder="Modelo"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor19"
+                                        name="PotenciaValorInversor19" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor19" name="FaixaTensaoInversor19"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor19"
+                                        name="CorrenteNominalInversor19" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor19" name="FPInversor19"
+                                        placeholder="FP"></td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor19" name="RendimentoInversor19"
+                                        placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor19" name="DHTInversor19"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>20</td>
+                                <td><input type="text" id="FabricanteInversor20" name="FabricanteInversor20"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor20" name="ModeloInversor20"
+                                        placeholder="Modelo"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor20"
+                                        name="PotenciaValorInversor20" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor20" name="FaixaTensaoInversor20"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor20"
+                                        name="CorrenteNominalInversor20" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor20" name="FPInversor20"
+                                        placeholder="FP"></td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor20" name="RendimentoInversor20"
+                                        placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor20" name="DHTInversor20"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>21</td>
+                                <td><input type="text" id="FabricanteInversor21" name="FabricanteInversor21"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor21" name="ModeloInversor21"
+                                        placeholder="Modelo"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor21"
+                                        name="PotenciaValorInversor21" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor21" name="FaixaTensaoInversor21"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor21"
+                                        name="CorrenteNominalInversor21" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor21" name="FPInversor21"
+                                        placeholder="FP"></td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor21"
+                                        name="RendimentoInversor21" placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor21" name="DHTInversor21"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>22</td>
+                                <td><input type="text" id="FabricanteInversor22" name="FabricanteInversor22"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor22" name="ModeloInversor22"
+                                        placeholder="Modelo"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor22"
+                                        name="PotenciaValorInversor22" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor22" name="FaixaTensaoInversor22"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor22"
+                                        name="CorrenteNominalInversor22" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor22" name="FPInversor22"
+                                        placeholder="FP"></td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor22"
+                                        name="RendimentoInversor22" placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor22" name="DHTInversor22"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>23</td>
+                                <td><input type="text" id="FabricanteInversor23" name="FabricanteInversor23"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor23" name="ModeloInversor23"
+                                        placeholder="Modelo"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor23"
+                                        name="PotenciaValorInversor23" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor23" name="FaixaTensaoInversor23"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor23"
+                                        name="CorrenteNominalInversor23" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor23" name="FPInversor23"
+                                        placeholder="FP"></td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor23"
+                                        name="RendimentoInversor23" placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor23" name="DHTInversor23"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>24</td>
+                                <td><input type="text" id="FabricanteInversor24" name="FabricanteInversor24"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor24" name="ModeloInversor24"
+                                        placeholder="Modelo"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor24"
+                                        name="PotenciaValorInversor24" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor24" name="FaixaTensaoInversor24"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor24"
+                                        name="CorrenteNominalInversor24" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor24" name="FPInversor24"
+                                        placeholder="FP"></td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor24"
+                                        name="RendimentoInversor24" placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor24" name="DHTInversor24"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>25</td>
+                                <td><input type="text" id="FabricanteInversor25" name="FabricanteInversor25"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor25" name="ModeloInversor25"
+                                        placeholder="Modelo"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor25"
+                                        name="PotenciaValorInversor25" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor25" name="FaixaTensaoInversor25"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor25"
+                                        name="CorrenteNominalInversor25" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor25" name="FPInversor25"
+                                        placeholder="FP"></td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor25"
+                                        name="RendimentoInversor25" placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor25" name="DHTInversor25"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>26</td>
+                                <td><input type="text" id="FabricanteInversor26" name="FabricanteInversor26"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor26" name="ModeloInversor26"
+                                        placeholder="Modelo"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor26"
+                                        name="PotenciaValorInversor26" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor26" name="FaixaTensaoInversor26"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor26"
+                                        name="CorrenteNominalInversor26" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor26" name="FPInversor26"
+                                        placeholder="FP"></td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor26"
+                                        name="RendimentoInversor26" placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor26" name="DHTInversor26"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>27</td>
+                                <td><input type="text" id="FabricanteInversor27" name="FabricanteInversor27"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor27" name="ModeloInversor27"
+                                        placeholder="Modelo"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor27"
+                                        name="PotenciaValorInversor27" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor27" name="FaixaTensaoInversor27"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor27"
+                                        name="CorrenteNominalInversor27" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor27" name="FPInversor27"
+                                        placeholder="FP"></td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor27"
+                                        name="RendimentoInversor27" placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor27" name="DHTInversor27"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>28</td>
+                                <td><input type="text" id="FabricanteInversor28" name="FabricanteInversor28"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor28" name="ModeloInversor28"
+                                        placeholder="Modelo"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor28"
+                                        name="PotenciaValorInversor28" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor28" name="FaixaTensaoInversor28"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor28"
+                                        name="CorrenteNominalInversor28" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor28" name="FPInversor28"
+                                        placeholder="FP"></td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor28"
+                                        name="RendimentoInversor28" placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor28" name="DHTInversor28"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>29</td>
+                                <td><input type="text" id="FabricanteInversor29" name="FabricanteInversor29"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor29" name="ModeloInversor29"
+                                        placeholder="Modelo"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor29"
+                                        name="PotenciaValorInversor29" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor29" name="FaixaTensaoInversor29"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor29"
+                                        name="CorrenteNominalInversor29" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor29" name="FPInversor29"
+                                        placeholder="FP"></td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor29"
+                                        name="RendimentoInversor29" placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor29" name="DHTInversor29"
+                                        placeholder="%"></td>
+                            </tr>
+                            <tr>
+                                <td>30</td>
+                                <td><input type="text" id="FabricanteInversor30" name="FabricanteInversor30"
+                                        placeholder="Fabricante"></td>
+                                <td><input type="text" id="ModeloInversor30" name="ModeloInversor30"
+                                        placeholder="Modelo"></td>
+                                <td><input type="text" step="0.01" id="PotenciaValorInversor30"
+                                        name="PotenciaValorInversor30" placeholder="kW"></td>
+                                <td><input type="text" id="FaixaTensaoInversor30" name="FaixaTensaoInversor30"
+                                        placeholder="V"></td>
+                                <td><input type="text" step="0.01" id="CorrenteNominalInversor30"
+                                        name="CorrenteNominalInversor30" placeholder="A"></td>
+                                <td><input type="text" step="0.01" id="FPInversor30" name="FPInversor30"
+                                        placeholder="FP"></td>
+                                <td><input type="text" step="0.01" id="RendimentoInversor30"
+                                        name="RendimentoInversor30" placeholder="%"></td>
+                                <td><input type="text" step="0.01" id="DHTInversor30" name="DHTInversor30"
+                                        placeholder="%"></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>TOTAL</td>
+                                <td></td>
+                                <td></td>
+                                <td><input type="text" step="0.01" name="potenciaInversorTotal"
+                                        placeholder="Total kW"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <p class="table-note">Obs: Unidades Geradoras Fotovoltaicas e Eólicas</p>
+            </div>
+
+            <button type="submit" class="submit-button">Enviar Solicitação</button>
+
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
