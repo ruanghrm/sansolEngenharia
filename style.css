@@ -1,271 +1,505 @@
-/* Estilos Gerais */
+/* Estilos Gerais Modernizados */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
 }
 
 body {
-    background-color: #f5f5f5;
-    padding: 20px;
+    background: linear-gradient(135deg, #ff7e29 0%, #ff5f29 100%);
+    padding: 30px 20px;
     color: #333;
-    font-size: 12px;
-    line-height: 1.4;
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 20px;
-    font-size: 16px;
-    color: #0066cc;
+    margin-bottom: 25px;
+    font-size: 28px;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
-/* Container Principal */
+/* Container Principal Moderno */
 .form-container {
     background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    padding: 30px;
     margin: 0 auto;
     max-width: 1200px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    width: 95%;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Cabeçalho do Formulário */
+.form-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff7b00, #ffaa00, #ff7b00);
+    background-size: 200% 100%;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Cabeçalho do Formulário Moderno */
 .form-header {
     text-align: center;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ccc;
-    font-size: 14px;
-    font-weight: bold;
-    color: #cc0000;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ff5500;
+    position: relative;
 }
 
-/* Títulos das Seções */
-.section-title {
-    background-color: #e6e6e6;
-    padding: 8px;
-    margin: 15px 0 10px;
-    font-weight: bold;
-    border-left: 4px solid #0066cc;
-}
-
-/* Linhas do Formulário */
-.form-row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 8px;
-    border-bottom: 1px dotted #eee;
-    padding-bottom: 5px;
-}
-
-/* Grupos de Campos */
-.form-group {
-    flex: 1;
-    min-width: 200px;
-    padding: 5px 8px;
-    margin-bottom: 5px;
-}
-
-/* Labels */
-.form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 3px;
-    font-size: 11px;
-    color: #555;
-}
-
-/* Campos de Entrada */
-.form-group input, .form-group select, .form-group textarea {
-    width: 100%;
-    padding: 6px;
-    border: 1px solid #ccc;
+.form-header::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #ff7b00, #ffaa00);
     border-radius: 3px;
+}
+
+/* Títulos das Seções Modernos */
+.section-title {
+    background: linear-gradient(to right, #fff4e6, white);
+    padding: 12px 15px;
+    margin: 20px 0 15px;
+    font-weight: 600;
+    border-left: 5px solid #ff7b00;
+    border-radius: 0 8px 8px 0;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+}
+
+.section-title::before {
+    content: '▶';
+    margin-right: 10px;
+    color: #ff7b00;
     font-size: 12px;
 }
 
-/* Campos Obrigatórios (em vermelho) */
+/* Linhas do Formulário Modernas */
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: all 0.3s ease;
+}
+
+.form-row:hover {
+    background-color: rgba(255, 165, 0, 0.03);
+    border-radius: 6px;
+    padding: 10px 5px 15px;
+}
+
+/* Grupos de Campos Modernos */
+.form-group {
+    flex: 1;
+    min-width: 200px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    position: relative;
+}
+
+/* Labels Modernos */
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: #555;
+    transition: all 0.2s ease;
+}
+
+.form-group:focus-within label {
+    color: #ff7b00;
+}
+
+/* Campos de Entrada Modernos */
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: #ffaa00;
+    box-shadow: 0 0 0 3px rgba(255, 170, 0, 0.2);
+}
+
+/* Campos Obrigatórios Modernos */
 .required-field input {
-    border: 1px solid #cc0000;
-    background-color: #fff0f0;
+    border: 2px solid #ffaa00;
+    background-color: #fffaf0;
 }
 
 .required-field label::after {
     content: " *";
-    color: #cc0000;
+    color: #ff5500;
 }
 
-/* Texto Informativo */
+/* Texto Informativo Moderno */
 .info-text {
     font-style: italic;
-    color: #666;
-    font-size: 11px;
-    margin-top: 3px;
+    color: #777;
+    font-size: 12px;
+    margin-top: 5px;
+    padding-left: 5px;
+    border-left: 2px solid #ffd699;
 }
 
-/* Botão de Envio */
+/* Botão de Envio Moderno */
 .submit-button {
-    background-color: #0066cc;
+    background: linear-gradient(to right, #ff7b00, #ff5500);
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
+    padding: 14px 35px;
+    border-radius: 50px;
     cursor: pointer;
-    font-size: 14px;
-    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 30px;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    box-shadow: 0 4px 15px rgba(255, 123, 0, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.submit-button:hover::before {
+    left: 100%;
 }
 
 .submit-button:hover {
-    background-color: #0055aa;
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(255, 123, 0, 0.6);
 }
 
-/* Campos de seleção específicos */
+.submit-button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(255, 123, 0, 0.4);
+}
+
+/* Campos de seleção específicos modernos */
 .select-field {
     background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    border: 2px solid #e8e8e8;
 }
 
-/* Área de instruções */
+.select-field:focus {
+    background-color: white;
+}
+
+/* Área de instruções moderna */
 .instructions {
-    background-color: #f0f8ff;
-    padding: 10px;
-    border-radius: 4px;
-    margin: 10px 0;
-    border-left: 3px solid #0066cc;
+    background: linear-gradient(to right, #f0f8ff, #e6f2ff);
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin: 15px 0;
+    border-left: 5px solid #4d9fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-/* Campos com fundo cinza (como no Excel) */
+/* Campos com fundo moderno */
 .gray-bg {
-    background-color: #f5f5f5;
-    padding: 8px;
-    border-radius: 4px;
+    background-color: #f8f8f8;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #eee;
 }
 
-/* Campos de coordenadas UTM */
+/* Campos de coordenadas UTM modernos */
 .coordinate-field {
-    background-color: #e8f4ff;
-    border: 1px dashed #99ccff;
+    background-color: #f0f8ff;
+    border: 2px dashed #99ccff;
+    border-radius: 8px;
 }
 
-/* Mensagens de alerta/erro */
+/* Mensagens de alerta/erro modernas */
 .alert-message {
-    color: #cc0000;
-    font-size: 11px;
-    font-weight: bold;
-    margin-top: 3px;
+    color: #ff3300;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 5px;
+    padding: 5px 10px;
+    background-color: #fff0f0;
+    border-radius: 4px;
+    display: inline-block;
 }
 
-/* Estilos para as tabelas de Unidades Geradoras */
+/* Estilos para as tabelas de Unidades Geradoras modernas */
 .ug-section {
-    margin: 20px 0;
-    padding: 15px;
+    margin: 25px 0;
+    padding: 20px;
     background-color: #f9f9f9;
-    border-radius: 5px;
-    border: 1px solid #ddd;
+    border-radius: 8px;
+    border: 1px solid #e8e8e8;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
 }
 
 .ug-section h3 {
     margin-top: 0;
-    color: #0066cc;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
+    color: #ff7b00;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 12px;
+    font-size: 18px;
 }
 
 .table-container {
     overflow-x: auto;
-    margin: 15px 0;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .ug-table {
     width: 100%;
-    border-collapse: collapse;
-    margin: 10px 0;
-    font-size: 12px;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 15px 0;
+    font-size: 13px;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .ug-table th, .ug-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 12px 10px;
     text-align: center;
 }
 
 .ug-table th {
-    background-color: #e6e6e6;
-    font-weight: bold;
+    background: linear-gradient(to bottom, #f8f8f8, #f0f0f0);
+    font-weight: 600;
+    color: #555;
+}
+
+.ug-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.ug-table tr:hover {
+    background-color: #fff4e6;
 }
 
 .ug-table input {
     width: 100%;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    font-size: 11px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+.ug-table input:focus {
+    border-color: #ffaa00;
+    box-shadow: 0 0 0 2px rgba(255, 170, 0, 0.2);
+    outline: none;
 }
 
 .ug-table tfoot {
-    background-color: #f0f0f0;
-    font-weight: bold;
+    background: linear-gradient(to bottom, #f5f5f5, #e8e8e8);
+    font-weight: 600;
 }
 
 .ug-table tfoot input {
-    background-color: #f5f5f5;
-    font-weight: bold;
+    background-color: #f0f0f0;
+    font-weight: 600;
 }
 
 .table-note {
     font-style: italic;
     color: #666;
-    font-size: 11px;
-    margin: 5px 0;
+    font-size: 12px;
+    margin: 8px 0;
+    padding-left: 10px;
+    border-left: 3px solid #ffaa00;
 }
 
-/* Container que agrupa os campos que queremos compactar */
+/* Container que agrupa os campos compactados modernos */
 .compact-fields {
     display: flex;
-    flex-wrap: wrap;      /* permite quebrar para a próxima linha se necessário */
-    gap: 15px;            /* espaço entre os campos */
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-/* Cada form-group dentro do container */
+/* Cada form-group dentro do container moderno */
 .compact-fields .form-group {
-    flex: 1 1 150px;      /* largura mínima de 150px, cresce se houver espaço */
+    flex: 1 1 180px;
     display: flex;
     flex-direction: column;
 }
 
-/* Inputs menores e uniformes */
+/* Inputs menores e uniformes modernos */
 .compact-fields .form-group input {
     width: 100%;
-    padding: 5px 8px;
+    padding: 10px 12px;
     font-size: 14px;
     box-sizing: border-box;
 }
 
+/* Header da seção com seta moderno */
+.section-header {
+    background: linear-gradient(to right, #fff4e6, #ffedd1);
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+    user-select: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border: 1px solid #ffe0b3;
+    transition: all 0.3s ease;
+}
+
+.section-header:hover {
+    background: linear-gradient(to right, #ffeccc, #ffe0b3);
+}
+
+/* Seta da seção moderna */
+#toggleTecnico #setaTecnico {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+    color: #ff7b00;
+}
+
+/* Rotaciona a seta quando a seção estiver aberta */
+#toggleTecnico.aberto #setaTecnico {
+    transform: rotate(90deg);
+}
+
+/* Conteúdo da seção moderno */
+#conteudoTecnico {
+    transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
+    overflow: hidden;
+}
+
+/* Quando estiver escondido */
+#conteudoTecnico.escondido {
+    max-height: 0;
+    opacity: 0;
+    padding: 0;
+}
+
+/* Quando estiver visível */
+#conteudoTecnico.visivel {
+    max-height: 2000px;
+    opacity: 1;
+    padding: 15px 0;
+}
+
+.btn-add-row {
+    margin-top: 15px;
+    padding: 10px 16px;
+    background: linear-gradient(to bottom, #4CAF50, #45a049);
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.btn-add-row:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-add-row:active {
+    transform: translateY(0);
+}
 
 /* Responsividade para tabelas */
 @media (max-width: 768px) {
     .ug-table {
-        font-size: 10px;
+        font-size: 12px;
     }
     
     .ug-table th, .ug-table td {
-        padding: 4px;
+        padding: 8px 6px;
     }
     
     .ug-table input {
-        padding: 3px;
-        font-size: 10px;
+        padding: 6px;
+        font-size: 12px;
+    }
+    
+    .compact-fields {
+        gap: 10px;
+    }
+    
+    .compact-fields .form-group {
+        flex: 1 1 100%;
     }
 }
 
-/* Layout responsivo */
+/* Layout responsivo moderno */
 @media (max-width: 768px) {
+    body {
+        padding: 15px 10px;
+    }
+    
+    .form-container {
+        padding: 20px 15px;
+        border-radius: 10px;
+    }
+    
     .form-group {
         min-width: 100%;
     }
@@ -273,4 +507,30 @@ h1 {
     .form-row {
         flex-direction: column;
     }
+    
+    .submit-button {
+        width: 100%;
+        padding: 12px;
+    }
 }
+
+/* Animações extras */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-container {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.form-group {
+    animation: fadeIn 0.5s ease-out;
+    animation-fill-mode: both;
+}
+
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.2s; }
+.form-group:nth-child(3) { animation-delay: 0.3s; }
+.form-group:nth-child(4) { animation-delay: 0.4s; }
+.form-group:nth-child(5) { animation-delay: 0.5s; }
