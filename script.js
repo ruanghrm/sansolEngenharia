@@ -331,6 +331,51 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+// --- Cálculo de Área dos Módulos ---
+let areaModulo = 0; // Guarda a área de 1 módulo em m²
+
+const larguraInput = document.getElementById("LarguraModulo");
+const alturaInput = document.getElementById("AlturaModulo");
+
+// Função para calcular a área (mm -> m²)
+function calcularAreaModulo() {
+    const largura = parseFloat(larguraInput.value) || 0;
+    const altura = parseFloat(alturaInput.value) || 0;
+
+    // Converte mm² para m²
+    areaModulo = (largura * altura) / 1_000_000;
+
+    atualizarAreas(); // recalcula todas as linhas quando a área muda
+}
+
+// Escuta mudanças nos campos de largura/altura
+larguraInput.addEventListener("input", calcularAreaModulo);
+alturaInput.addEventListener("input", calcularAreaModulo);
+
+
+// --- Função para atualizar áreas das linhas ---
+function atualizarAreas() {
+    const linhas = document.querySelectorAll("tr");
+    linhas.forEach((linha) => {
+        const qtdInput = linha.querySelector("input[id^='QuantidadeValor']");
+        const areaInput = linha.querySelector("input[id^='AreaValor']");
+
+        if (qtdInput && areaInput) {
+            const quantidade = parseFloat(qtdInput.value) || 0;
+            const areaTotal = quantidade * areaModulo;
+            areaInput.value = areaTotal > 0 ? areaTotal.toFixed(2).replace(".", ",") : "";
+        }
+    });
+}
+
+// Escutar mudanças de quantidade para recalcular
+document.addEventListener("input", function (e) {
+    if (e.target && e.target.id.startsWith("QuantidadeValor")) {
+        atualizarAreas();
+    }
+});
+
+
 function enriquecerJson(jsonData) {
     // --- Polos do disjuntor ---
     if (jsonData["#TipoLigacao"] === "BIFÁSICO") {
@@ -357,14 +402,6 @@ function enriquecerJson(jsonData) {
         jsonData["#SecaoCabo"] = regrasCabos[chave].secao;
     }
 
-    // --- Dados fixos ---
-    jsonData["#Termomagnetico"] = "TERMOMAGNÉTICO";
-    jsonData["#FrequenciaNominal"] = "60";
-    jsonData["#CapacidadeMaxInterrupcao"] = "10";
-    jsonData["#CurvaAtuacao"] = "C";
-    jsonData["#FPDado"] = "0,92";
-    jsonData["#CapacidadeMaxAtuacao"] = "3";
-
     if (jsonData["#TipoLigacao"] === "MONOFÁSICO" || jsonData["#TipoLigacao"] === "BIFÁSICO") {
         jsonData["#NFdado"] = "1";
     } else if (jsonData["#TipoLigacao"] === "TRIFÁSICO") {
@@ -378,6 +415,20 @@ function enriquecerJson(jsonData) {
 
     jsonData["#PotenciaGeracaoOrcamento"] = menorValor;
     jsonData["#PotenciaGeracaoPGT"] = menorValor;
+    jsonData["#GeracaoMedia"] = (potenciaPico * 110).toFixed(2).replace(".", ",");
+
+    // --- Contar linhas da tabela de inversores ---
+    const tabelaInversores = document.querySelectorAll("tr"); // você pode usar um seletor mais específico se houver várias tabelas
+    let quantidadeLinhas = 0;
+
+    tabelaInversores.forEach(tr => {
+        // Só contar linhas que tenham inputs de inversor
+        if (tr.querySelector("input[id^='FabricanteInversor']")) {
+            quantidadeLinhas++;
+        }
+    });
+
+    jsonData["#QuantidadeTotalInversor"] = quantidadeLinhas;
 
     // --- Lógica Potência Disponibilizada ---
     const tipo = jsonData["#TipoLigacao"];
@@ -386,33 +437,80 @@ function enriquecerJson(jsonData) {
 
     const regrasPotencia = {
         "BIFÁSICO": {
-            "50 A": { "220": 10 },
-            "60 A": { "220": 12 },
-            "63 A": { "220": 12 },
-            "70 A": { "220": 15 }
+            "50": { "220": 10 },
+            "60": { "220": 12 },
+            "63": { "220": 12 },
+            "70": { "220": 15 }
         },
         "TRIFÁSICO": {
-            "40 A": { "220": 15 },
-            "50 A": { "220": 17 },
-            "60 A": { "220": 21 },
-            "63 A": { "220": 22 },
-            "70 A": { "220": 24 },
-            "80 A": { "220": 28 },
-            "100 A": { "220": 35 },
-            "125 A": { "220": 44 },
-            "150 A": { "220": 52 },
-            "175 A": { "220": 61 },
-            "200 A": { "220": 75 }
+            "40": { "220": 15 },
+            "50": { "220": 17 },
+            "60": { "220": 21 },
+            "63": { "220": 22 },
+            "70": { "220": 24 },
+            "80": { "220": 28 },
+            "100": { "220": 35 },
+            "125": { "220": 44 },
+            "150": { "220": 52 },
+            "175": { "220": 61 },
+            "200": { "220": 75 }
         }
     };
 
     let potenciaDisp = "";
     if (regrasPotencia[tipo] && regrasPotencia[tipo][disjuntor] && regrasPotencia[tipo][disjuntor][tensao]) {
-        // Formata para duas casas decimais, com vírgula
         potenciaDisp = regrasPotencia[tipo][disjuntor][tensao].toFixed(2).replace(".", ",");
     }
 
     jsonData["#PotenciaDisponibilizada"] = potenciaDisp;
+
+        // --- Check Análise ---
+    const pgt = parseFloat(jsonData["#PotenciaGeracaoPGT"].toString().replace(",", ".")) || 0;
+    const pd = parseFloat(jsonData["#PotenciaDisponibilizada"].toString().replace(",", ".")) || 0;
+
+    if (!pgt || !pd) {
+        jsonData["#CheckAnali"] = "";
+    } else if (pgt <= 75) {
+        if (pgt <= pd) {
+            jsonData["#CheckAnali"] = "OK: PGT ≤ PD";
+        } else {
+            jsonData["#CheckAnali"] = "NOK: PGT > PD";
+        }
+    } else {
+        jsonData["#CheckAnali"] = "PGT ACIMA DO LIMITE DO GRUPO B";
+    }
+
+    // --- Dimensões do módulo ---
+    const largura = document.getElementById("LarguraModulo")?.value || "";
+    const altura = document.getElementById("AlturaModulo")?.value || "";
+    if (largura && altura) {
+        jsonData["#DimensoesModulo"] = `${largura} x ${altura}`;
+    } else {
+        jsonData["#DimensoesModulo"] = "";
+    }
+
+     // --- Dados fixos ---
+    jsonData["#Termomagnetico"] = "TERMOMAGNÉTICO";
+    jsonData["#FrequenciaNominal"] = "60";
+    jsonData["#CapacidadeMaxInterrupcao"] = "10";
+    jsonData["#CurvaAtuacao"] = "C";
+    jsonData["#FPDado"] = "0,92";
+    jsonData["#CapacidadeMaxAtuacao"] = "3";
+    
+    // Converte potenciaDisp (string com vírgula) de volta para número
+    let potenciaDispNumero = parseFloat(potenciaDisp.replace(",", ".")) || 0;
+
+    // Faz o cálculo
+    let pdkva = potenciaDispNumero / 0.92;
+
+    jsonData["#PDkva"] = pdkva.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    // --- Corrente Nominal (Corrige Norminal) ---
+    const correnteNominal = document.getElementById("CorrenteNominalInversor1")?.value || "";
+    jsonData["#CorrenteNorminalInversor1"] = correnteNominal;
+
+    const numeroPoste = document.getElementById("IdentificacaoPoste")?.value || "";
+    jsonData["#NumeroPoste"] = numeroPoste;
 
     return jsonData;
 }

@@ -232,15 +232,15 @@
                 <div class="form-group">
                     <label for="disjuntorEntrada">Disjuntor de Entrada da UC</label>
                     <select id="DisjuntorEntrada" name="disjuntorEntrada">
-                        <option value="30 A">30 A</option>
-                        <option value="32 A">32 A</option>
-                        <option value="40 A">40 A</option>
-                        <option value="50 A">50 A</option>
-                        <option value="63 A">63 A</option>
-                        <option value="70 A">70 A</option>
-                        <option value="80 A">80 A</option>
-                        <option value="125 A">125 A</option>
-                        <option value="200 A">200 A</option>
+                        <option value="30">30 A</option>
+                        <option value="32">32 A</option>
+                        <option value="40">40 A</option>
+                        <option value="50">50 A</option>
+                        <option value="63">63 A</option>
+                        <option value="70">70 A</option>
+                        <option value="80">80 A</option>
+                        <option value="125">125 A</option>
+                        <option value="200">200 A</option>
                     </select>
                 </div>
             </div>
@@ -465,22 +465,27 @@
                 <h3>1. Solar Fotovoltaica</h3>
         <div class="compact-fields">
                 <div class="form-group">
-                <label for="Voc">Tensão de circuito aberto (Voc) [V]</label>
+                <label for="Voc">Tensão de circuito aberto</label>
                 <input type="text" id="VocModulo" name="Voc" step="0.01">
                 </div>
 
                 <div class="form-group">
-                <label for="Isc">Corrente de curto-circuito (Isc) [A]</label>
+                <label for="CorrenteDisjuntor">CORRENTE NOMINAL [A]:</label>
+                <input type="text" id="CorrenteDisjuntor" name="CorrenteDisjuntor">
+                </div>
+
+                <div class="form-group">
+                <label for="Isc">Corrente de curto-circuito</label>
                 <input type="text" id="IscModulo" name="Isc" step="0.01">
                 </div>
 
                 <div class="form-group">
-                <label for="Vpmp">Tensão de max potência (Vpmp) [V]</label>
+                <label for="Vpmp">Tensão de max potência</label>
                 <input type="text" id="VpmpModulo" name="Vpmp" step="0.01">
                 </div>
 
                 <div class="form-group">
-                <label for="Ipmp">Corrente de max potência (Ipmp) [A]</label>
+                <label for="Ipmp">Corrente de max potência</label>
                 <input type="text" id="IpmpModulo" name="Ipmp" step="0.01">
                 </div>
 
@@ -490,14 +495,19 @@
                 </div>
 
                 <div class="form-group">
-                <label for="Dimensoes">Dimensões [mm]</label>
-                <input type="text" id="DimensoesModulo" name="Dimensoes">
-                </div>
+                <label for="LarguraModulo">Largura [mm]</label>
+                <input type="number" id="LarguraModulo" name="LarguraModulo" step="0.001" placeholder="ex: 2177">
+            </div>
 
-                <div class="form-group">
-                <label for="Peso">Peso [kg]</label>
-                <input type="text" id="PesoModulo" name="Peso" step="0.01">
-                </div>
+            <div class="form-group">
+                <label for="AlturaModulo">Altura [mm]</label>
+                <input type="number" id="AlturaModulo" name="AlturaModulo" step="0.001" placeholder="ex: 1303">
+            </div>
+
+            <div class="form-group">
+                <label for="PesoModulo">Peso [kg]</label>
+                <input type="number" id="PesoModulo" name="PesoModulo" step="0.001" placeholder="ex: 15,00">
+            </div>
         </div>
                 <div class="table-container">
 
@@ -546,13 +556,24 @@
                     arranjo é o agrupamento de módulos, o gerador</p>
             </div>
 
+            <div class="form-group">
+                <label for="CapacidadeDeConducaoCC">CAPACIDADE DE CONDUÇÃO DE CORRENTE – CC [A]</label>
+                <input type="text" id="CapacidadeDeConducaoCC" name="CapacidadeDeConducaoCC">
+            </div>
+
+            <div class="form-group">
+                <label for="CapacidadeDeConducaoCA">CAPACIDADE DE CONDUÇÃO DE CORRENTE – CA [A]</label>
+                <input type="text" id="CapacidadeDeConducaoCA" name="CapacidadeDeConducaoCA">
+            </div>
+
+
             <!-- 2. Dados dos Inversores -->
             <div class="ug-section">
                 <h3>2. Dados dos Inversores</h3>
 
                 <div class="compact-fields">
                 <div class="form-group">
-                        <label for="PmaxCC">MAX potência na entrada CC [kW]</label>
+                        <label for="PmaxCC">MAX potência na entrada CC</label>
                         <input type="text" id="PmaxCCInversor" name="PmaxCC">
                 </div>
 
@@ -652,6 +673,18 @@
                 </div>
                 <p class="table-note">Obs: Unidades Geradoras Fotovoltaicas e Eólicas</p>
             </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="Local">Local</label>
+                    <input type="text" id="Local" name="Local" placeholder="Digite o local">
+                </div>
+                <div class="form-group">
+                    <label for="Data">Data</label>
+                    <input type="date" id="Data" name="Data" placeholder="Selecione a data">
+                </div>
+            </div>
+
 
             <button type="submit" class="submit-button">Enviar Solicitação</button>
 
