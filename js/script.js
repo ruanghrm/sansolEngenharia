@@ -1,3 +1,5 @@
+import { API_URL, token } from './config2.js';
+
 window.addEventListener("DOMContentLoaded", () => {
     const totalPotencia = document.getElementById("PotenciaPico");
     const totalQtd = document.getElementById("QtdModulo");
@@ -26,34 +28,34 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // --- Atualiza totais gerais (Potência, Quantidade, Área) ---
     function atualizarTotais() {
-    let somaPotencia = 0;
-    let somaQtd = 0;
-    let somaArea = 0;
+        let somaPotencia = 0;
+        let somaQtd = 0;
+        let somaArea = 0;
 
-    // Busca apenas as linhas existentes no DOM
-    const rows = tableBody.querySelectorAll("tr");
-    rows.forEach((row, index) => {
-        const i = index + 1; // já que o id começa em 1
-        calcularLinha(i);
+        // Busca apenas as linhas existentes no DOM
+        const rows = tableBody.querySelectorAll("tr");
+        rows.forEach((row, index) => {
+            const i = index + 1; // já que o id começa em 1
+            calcularLinha(i);
 
-        const potencia = document.getElementById(`PotenciaValor${i}`);
-        const qtd = document.getElementById(`QuantidadeValor${i}`);
-        const area = document.getElementById(`AreaValor${i}`);
+            const potencia = document.getElementById(`PotenciaValor${i}`);
+            const qtd = document.getElementById(`QuantidadeValor${i}`);
+            const area = document.getElementById(`AreaValor${i}`);
 
-        if (potencia && potencia.value)
-            somaPotencia += parseFloat(potencia.value.replace(",", ".")) || 0;
-        if (qtd && qtd.value)
-            somaQtd += parseInt(qtd.value) || 0;
-        if (area && area.value)
-            somaArea += parseFloat(area.value.replace(",", ".")) || 0;
-    });
+            if (potencia && potencia.value)
+                somaPotencia += parseFloat(potencia.value.replace(",", ".")) || 0;
+            if (qtd && qtd.value)
+                somaQtd += parseInt(qtd.value) || 0;
+            if (area && area.value)
+                somaArea += parseFloat(area.value.replace(",", ".")) || 0;
+        });
 
-    if (totalPotencia)
-        totalPotencia.value = somaPotencia.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    if (totalQtd)
-        totalQtd.value = somaQtd;
-    if (totalArea)
-        totalArea.value = somaArea.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        if (totalPotencia)
+            totalPotencia.value = somaPotencia.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        if (totalQtd)
+            totalQtd.value = somaQtd;
+        if (totalArea)
+            totalArea.value = somaArea.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
     // --- Adiciona listeners para cada linha ---
@@ -86,7 +88,7 @@ window.addEventListener("DOMContentLoaded", () => {
             <td>${currentRows}</td>
             <td><input type="text" id="PotenciaModulo${currentRows}" name="PotenciaModulo${currentRows}" placeholder="W"></td>
             <td><input type="text" id="QuantidadeValor${currentRows}" name="QuantidadeValor${currentRows}" placeholder="Qtd"></td>
-            <td><input type="text" step="0.01" id="PotenciaValor${currentRows}" name="PotenciaValor${currentRows}" placeholder="kWp" readonly></td>
+            <td><input type="text" step="0.01" id="PotenciaValor${currentRows}" name="PotenciaValor${currentRows}" placeholder="kWp"></td>
             <td><input type="text" step="0.01" id="AreaValor${currentRows}" name="AreaValor${currentRows}" placeholder="m²"></td>
             <td><input type="text" id="FabricanteModulo${currentRows}" name="FabricanteModulo${currentRows}" placeholder="Fabricante"></td>
             <td><input type="text" id="ModeloModulo${currentRows}" name="ModeloModulo${currentRows}" placeholder="Modelo"></td>
@@ -201,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const modalidadeSelect = document.getElementById("ModalidadeCompensacao");
 
     // Cria container para os campos extras
@@ -211,7 +213,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     modalidadeSelect.parentNode.parentNode.appendChild(containerExtras);
 
-    modalidadeSelect.addEventListener("change", function() {
+    modalidadeSelect.addEventListener("change", function () {
         const valor = modalidadeSelect.value;
         containerExtras.innerHTML = ""; // limpa campos existentes
 
@@ -256,7 +258,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const tipoSelect = document.getElementById("TipoSolicitacao");
 
     // Container para o campo informativo
@@ -305,12 +307,12 @@ document.addEventListener("DOMContentLoaded", function() {
     containerInfo.innerHTML = "";
     containerPotencia.style.display = "none";
 
-    tipoSelect.addEventListener("change", function() {
+    tipoSelect.addEventListener("change", function () {
         const valor = tipoSelect.value;
         containerInfo.innerHTML = "";
         containerPotencia.style.display = "none";
 
-        switch(valor) {
+        switch (valor) {
             case "CONEXÃO DE GD EM UNIDADE CONSUMIDORA EXISTENTE SEM AUMENTO DE POTÊNCIA DISPONIBILIZADA (ver item abaixo)":
                 containerInfo.innerHTML = "INFORMAR O NÚMERO DA CONTA CONTRATO";
                 break;
@@ -476,9 +478,11 @@ function enriquecerJson(jsonData) {
 
     jsonData["#PotenciaDisponibilizada"] = potenciaDisp;
 
-        // --- Check Análise ---
+    // --- Check Análise ---
     const pgt = parseFloat(jsonData["#PotenciaGeracaoPGT"].toString().replace(",", ".")) || 0;
     const pd = parseFloat(jsonData["#PotenciaDisponibilizada"].toString().replace(",", ".")) || 0;
+
+    console.log("PGT:", pgt, "PD:", pd, jsonData);
 
     if (!pgt || !pd) {
         jsonData["#CheckAnali"] = "";
@@ -501,14 +505,14 @@ function enriquecerJson(jsonData) {
         jsonData["#DimensoesModulo"] = "";
     }
 
-     // --- Dados fixos ---
+    // --- Dados fixos ---
     jsonData["#Termomagnetico"] = "TERMOMAGNÉTICO";
     jsonData["#FrequenciaNominal"] = "60";
     jsonData["#CapacidadeMaxInterrupcao"] = "10";
     jsonData["#CurvaAtuacao"] = "C";
     jsonData["#FPDado"] = "0,92";
     jsonData["#CapacidadeMaxAtuacao"] = "3";
-    
+
     // Converte potenciaDisp (string com vírgula) de volta para número
     let potenciaDispNumero = parseFloat(potenciaDisp.replace(",", ".")) || 0;
 
@@ -523,6 +527,10 @@ function enriquecerJson(jsonData) {
 
     const numeroPoste = document.getElementById("IdentificacaoPoste")?.value || "";
     jsonData["#NumeroPoste"] = numeroPoste;
+
+    if (window.tecnicoAtual) {
+        jsonData = { ...jsonData, ...window.tecnicoAtual };
+    }
 
     return jsonData;
 }
@@ -549,24 +557,291 @@ document.getElementById("orcamentoForm").addEventListener("submit", function (ev
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(jsonData)
     })
-    .then(response => {
-        if (!response.ok) throw new Error("Erro ao gerar arquivo");
-        const disposition = response.headers.get("Content-Disposition");
-        let filename = "arquivo_gerado.zip";
-        if (disposition && disposition.includes("filename=")) {
-            filename = disposition.split("filename=")[1].replace(/["']/g, "");
+        .then(response => {
+            if (!response.ok) throw new Error("Erro ao gerar arquivo");
+            const disposition = response.headers.get("Content-Disposition");
+            let filename = "arquivo_gerado.zip";
+            if (disposition && disposition.includes("filename=")) {
+                filename = disposition.split("filename=")[1].replace(/["']/g, "");
+            }
+            return response.blob().then(blob => ({ blob, filename }));
+        })
+        .then(({ blob, filename }) => {
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(url);
+        })
+        .catch(error => console.error("Erro:", error));
+});
+
+
+let tecnicos = []; // para armazenar os dados completos
+
+document.addEventListener("DOMContentLoaded", function () {
+    const selectTecnico = document.getElementById("TecnicoResponsavel");
+
+    if (!selectTecnico) return;
+    if (!token) {
+        console.error("Token não encontrado. Redirecionando para login.");
+        window.location.href = "login.html";
+        return;
+    }
+
+    // Faz GET na API de técnicos com token
+    fetch(`${API_URL}/technicians`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
         }
-        return response.blob().then(blob => ({ blob, filename }));
     })
-    .then(({ blob, filename }) => {
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        window.URL.revokeObjectURL(url);
-    })
-    .catch(error => console.error("Erro:", error));
+        .then(response => {
+            if (!response.ok) throw new Error("Erro ao buscar técnicos: " + response.status);
+            return response.json();
+        })
+        .then(data => {
+            tecnicos = data; // guarda os dados completos
+            selectTecnico.innerHTML = '<option value="">Selecione</option>';
+
+            data.forEach(tecnico => {
+                const option = document.createElement("option");
+                option.value = tecnico.id;
+                option.textContent = tecnico.nomeTecnico; // mapeia corretamente
+                selectTecnico.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error("Erro ao carregar técnicos:", error);
+            selectTecnico.innerHTML = '<option value="">Erro ao carregar técnicos</option>';
+        });
+
+    // --- Quando selecionar um técnico ---
+    selectTecnico.addEventListener("change", function () {
+        const selectedId = parseInt(this.value);
+        const tecnicoSelecionado = tecnicos.find(t => t.id === selectedId);
+        if (!tecnicoSelecionado) return;
+
+        // Armazena globalmente os dados do técnico para JSON e formulário
+        window.tecnicoAtual = {
+            "#NomeTecnico": tecnicoSelecionado.nomeTecnico,           // ID: NomeTecnico
+            "#TituloTecnico": tecnicoSelecionado.tituloTecnico,       // ID: TituloTecnico
+            "#RegistroTecnico": tecnicoSelecionado.registroTecnico,   // ID: RegistroTecnico
+            "#EmailTecnico": tecnicoSelecionado.emailTecnico,         // ID: EmailTecnico
+            "#TelefoneTecnico": tecnicoSelecionado.telefoneFixoTecnico, // ID: TelefoneTecnico
+            "#CelularTecnico": tecnicoSelecionado.celularTecnico,     // ID: CelularTecnico
+            "#faxTecnico": tecnicoSelecionado.faxTecnico,             // ID: faxTecnico
+            "#EnderecoTecnico": tecnicoSelecionado.enderecoTecnico,   // ID: EnderecoTecnico
+            "#BairroTecnico": tecnicoSelecionado.bairroTecnico,       // ID: BairroTecnico
+            "#MunicipioTecnico": tecnicoSelecionado.cidadeTecnico,    // ID: MunicipioTecnico
+            "#UfTecnico": tecnicoSelecionado.ufTecnico,               // ID: UfTecnico
+            "#UfTecnico2": tecnicoSelecionado.ufTecnicoEndereco || tecnicoSelecionado.ufTecnico, // ID: UfTecnico2
+            "#CEPTecnico": tecnicoSelecionado.cepTecnico              // ID: CEPTecnico
+        };
+
+        console.log("Técnico selecionado para JSON:", window.tecnicoAtual);
+    });
+});
+
+// Armazenar os templates carregados globalmente
+let templatesCache = [];
+
+async function populateTemplateDropdowns() {
+    try {
+        const res = await fetch(`${API_URL}/templates`, {
+            headers: { Authorization: `Bearer ${token}` }
+        });
+
+        if (!res.ok) {
+            const errText = await res.text();
+            console.error("❌ Erro ao carregar templates:", errText);
+            return;
+        }
+
+        const templates = await res.json();
+        templatesCache = templates; // salvar no cache
+
+        const selectModulo = document.getElementById("selectTemplateModulo");
+        const selectInversor = document.getElementById("selectTemplateInversor");
+
+        selectModulo.length = 1;
+        selectInversor.length = 1;
+
+        templates.forEach(t => {
+            const option = document.createElement("option");
+            option.value = t.id;
+            option.textContent = t.name;
+
+            if (t.type === "modulo") selectModulo.appendChild(option);
+            else if (t.type === "inversor") selectInversor.appendChild(option);
+        });
+
+    } catch (err) {
+        console.error("Erro ao popular dropdowns:", err);
+    }
+}
+
+// Função para preencher os campos do módulo
+function fillModuleFields(templateId) {
+    const template = templatesCache.find(t => t.id == templateId && t.type === "modulo");
+    if (!template) return;
+
+    const data = template.data; // assumindo que os valores do módulo estão em template.data
+
+    // Preenchendo os campos do formulário
+    document.getElementById("templateModuloName").value = template.name || "";
+    document.getElementById("VocModulo").value = data.Voc || "";
+    //document.getElementById("CorrenteDisjuntor").value = data.CorrenteDisjuntor || "";
+    document.getElementById("IscModulo").value = data.Isc || "";
+    document.getElementById("VpmpModulo").value = data.Vpmp || "";
+    document.getElementById("IpmpModulo").value = data.Ipmp || "";
+    document.getElementById("EficienciaModulo").value = data.Eficiencia || "";
+    document.getElementById("LarguraModulo").value = data.LarguraModulo || "";
+    document.getElementById("AlturaModulo").value = data.AlturaModulo || "";
+    document.getElementById("PesoModulo").value = data.PesoModulo || "";
+
+    document.getElementById("PotenciaModulo1").value = data.PotenciaModulo1 || "";
+    //document.getElementById("QuantidadeValor1").value = data.QuantidadeValor1 || "";
+    document.getElementById("PotenciaValor1").value = data.PotenciaValor1 || "";
+    //document.getElementById("AreaValor1").value = data.AreaValor1 || "";
+    document.getElementById("FabricanteModulo1").value = data.FabricanteModulo1 || "";
+    document.getElementById("ModeloModulo1").value = data.ModeloModulo1 || "";
+
+    //document.getElementById("QtdModulo").value = data.quantidadeTotal || "";
+    document.getElementById("PotenciaPico").value = data.potenciaPicoTotal || "";
+    //document.getElementById("AreaModulo").value = data.areaArranjoTotal || "";
+
+    document.getElementById("CapacidadeDeConducaoCC").value = data.CapacidadeDeConducaoCC || "";
+    document.getElementById("CapacidadeDeConducaoCA").value = data.CapacidadeDeConducaoCA || "";
+}
+
+// Listener do dropdown do módulo
+document.getElementById("selectTemplateModulo").addEventListener("change", (e) => {
+    const templateId = e.target.value;
+    if (!templateId) return; // Nenhum selecionado
+    fillModuleFields(templateId);
+});
+
+// Chamar a função de popular dropdowns ao carregar a página
+window.addEventListener("DOMContentLoaded", populateTemplateDropdowns);
+
+// Listener do dropdown do inversor
+document.getElementById("selectTemplateInversor").addEventListener("change", (e) => {
+    const templateId = e.target.value;
+    if (!templateId) return; // Nenhum selecionado
+    fillInverterFields(templateId);
+});
+
+// Função para preencher os campos do inversor
+function fillInverterFields(templateId) {
+    const template = templatesCache.find(t => t.id == templateId && t.type === "inversor");
+    if (!template) return;
+
+    const data = template.data; // assumindo que os valores do inversor estão em template.data
+
+    // Preencher campos principais
+    document.getElementById("templateInversorName").value = template.name || "";
+    document.getElementById("PmaxCCInversor").value = data.PmaxCC || "";
+    document.getElementById("VccMaxInversor").value = data.VccMax || "";
+    document.getElementById("IccMaxInversor").value = data.IccMax || "";
+    document.getElementById("VpmpMPPTInversor").value = data.VpmpMPPT || "";
+    document.getElementById("VccPartInversor").value = data.VccPart || "";
+    document.getElementById("QtdEntradasMPPTInversor").value = data.QtdEntradasMPPT || "";
+    document.getElementById("StringsMPPTInversor").value = data.StringsMPPT || "";
+    document.getElementById("FrequenciaNominalInversor").value = data.FrequenciaNominal || "";
+    document.getElementById("EficienciaMaximaInversor").value = data.EficienciaMaxima || "";
+
+    // Preencher tabela de inversores (linha 1)
+    document.getElementById("FabricanteInversor1").value = data.FabricanteInversor1 || "";
+    document.getElementById("ModeloInversor1").value = data.ModeloInversor1 || "";
+    document.getElementById("PotenciaValorInversor1").value = data.PotenciaValorInversor1 || "";
+    document.getElementById("FaixaTensaoInversor1").value = data.FaixaTensaoInversor1 || "";
+    document.getElementById("CorrenteNominalInversor1").value = data.CorrenteNominalInversor1 || "";
+    document.getElementById("FPInversor1").value = data.FPInversor1 || "";
+    document.getElementById("RendimentoInversor1").value = data.RendimentoInversor1 || "";
+    document.getElementById("DHTInversor1").value = data.DHTInversor1 || "";
+
+    // Total de potência do inversor
+    document.getElementById("PotenciaInversorTotal").value = data.potenciaInversorTotal || "";
+}
+
+async function salvarTemplates() {
+    const selectModulo = document.getElementById("selectTemplateModulo");
+    const selectInversor = document.getElementById("selectTemplateInversor");
+
+    const nomeModulo = document.getElementById("templateModuloName").value.trim();
+    const nomeInversor = document.getElementById("templateInversorName").value.trim();
+
+    // Não envia se houver template selecionado no dropdown
+    const templateModuloSelecionado = selectModulo.value;
+    const templateInversorSelecionado = selectInversor.value;
+
+    if ((!nomeModulo || templateModuloSelecionado) && (!nomeInversor || templateInversorSelecionado)) {
+        console.log("Templates preenchidos via dropdown. Não enviando para evitar duplicidade.");
+        return;
+    }
+
+    let jsonData = {};
+
+    // Preenche o JSON com todos os campos do formulário
+    document.querySelectorAll("#orcamentoForm input, #orcamentoForm select").forEach(field => {
+        if (!field.id) return;
+        jsonData[field.name || field.id] = field.value;
+    });
+
+    // Adiciona os nomes dos templates somente se não tiver template selecionado
+    if (nomeModulo && !templateModuloSelecionado) jsonData.templateModuloName = nomeModulo;
+    if (nomeInversor && !templateInversorSelecionado) jsonData.templateInversorName = nomeInversor;
+
+    try {
+        const response = await fetch(`${API_URL}/render-with-template`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(jsonData)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            console.error("Erro ao salvar template:", result);
+            alert("Erro ao salvar template: " + (result.detail || response.statusText));
+        } else {
+            console.log("Templates salvos:", result);
+            alert("Templates salvos com sucesso!");
+        }
+
+    } catch (error) {
+        console.error("Erro ao salvar template:", error);
+        alert("Erro ao salvar template.");
+    }
+}
+
+// Exemplo de uso no submit do formulário
+document.getElementById("orcamentoForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    // Primeiro, tenta salvar templates (se houver campos preenchidos)
+    await salvarTemplates();
+
+    // Depois, continua com o envio normal do formulário (ex.: gerar arquivo ou apenas processar JSON)
+    const form = event.target;
+    let jsonData = {};
+    form.querySelectorAll("input, select").forEach(field => {
+        if (!field.id) return;
+        const key = "#" + field.id;
+        jsonData[key] = field.value;
+    });
+
+    jsonData = enriquecerJson(jsonData);
+
+    console.log("JSON final a enviar:", jsonData);
+
+    // Aqui você pode colocar o fetch que gera o arquivo ou outro processamento
 });

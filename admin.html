@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <h2>Painel Admin</h2>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <button class="tab-btn active" data-tab="users">
+                <i class="fas fa-users"></i>
+                <span>Usuários</span>
+            </button>
+            <button class="tab-btn" data-tab="templates">
+                <i class="fas fa-palette"></i>
+                <span>Templates</span>
+            </button>
+            <a href="index.html" class="tab-btn">
+                <i class="fas fa-file-alt"></i> <!-- não existe fa-forms, usei file-alt -->
+                <span>Formulário</span>
+            </a>
+        </nav>
+
+        <button class="logout" id="logoutBtn">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Sair</span>
+        </button>
+    </div>
+
+    <div class="content">
+
+        <!-- USERS TAB -->
+        <section id="users" class="tab active">
+            <div class="tab-header">
+                <h2><i class="fas fa-users"></i> Gerenciar Usuários</h2>
+                <button id="reloadUsers" class="reload-btn">
+                    <i class="fas fa-sync-alt"></i> Atualizar Lista
+                </button>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-user-plus"></i> Criar Novo Usuário</h3>
+                </div>
+                <form id="createUserForm" class="card-body">
+                    <div class="form-group">
+                        <label for="newName"><i class="fas fa-user"></i> Nome completo</label>
+                        <input type="text" id="newName" placeholder="Digite o nome completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newEmail"><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="newEmail" placeholder="Digite o email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword"><i class="fas fa-lock"></i> Senha</label>
+                        <input type="password" id="newPassword" placeholder="Digite a senha" required>
+                    </div>
+                    <div class="form-checkbox">
+                        <label class="inline">
+                            <input type="checkbox" id="newIsAdmin">
+                            <span class="checkmark"></span>
+                            <i class="fas fa-crown"></i> Administrador
+                        </label>
+                    </div>
+                    <button type="submit" class="save-btn">
+                        <i class="fas fa-plus-circle"></i> Criar Usuário
+                    </button>
+                </form>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-list"></i> Lista de Usuários</h3>
+                    <span id="usersCount" class="badge">0 usuários</span>
+                </div>
+                <div id="usersList" class="list"></div>
+            </div>
+        </section>
+
+        <!-- TEMPLATES TAB -->
+        <section id="templates" class="tab">
+            <div class="tab-header">
+                <h2><i class="fas fa-palette"></i> Gerenciar Templates</h2>
+                <button id="reloadTemplates" class="reload-btn">
+                    <i class="fas fa-sync-alt"></i> Atualizar</button>
+            </div>
+
+            <!-- Categoria: Técnicos -->
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-tools"></i> Templates Técnicos</h3>
+                    <div class="actions-header">
+                        <span id="templatesCountTech" class="badge">0</span>
+                        <button class="save-btn add-template-btn" data-type="tech">
+                            <i class="fas fa-plus-circle"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+                <div id="templatesListTech" class="list grid-list"></div>
+            </div>
+
+            <!-- Categoria: Módulos -->
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-solar-panel"></i> Templates de Módulos</h3>
+                    <div class="actions-header">
+                        <span id="templatesCountModules" class="badge">0</span>
+                        <button class="save-btn add-template-btn" data-type="modules">
+                        </button>
+                    </div>
+                </div>
+                <div id="templatesListModules" class="list grid-list"></div>
+            </div>
+
+            <!-- Categoria: Inversores -->
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-bolt"></i> Templates de Inversores</h3>
+                    <div class="actions-header">
+                        <span id="templatesCountInverters" class="badge">0</span>
+                        <button class="save-btn add-template-btn" data-type="inverters">
+                        </button>
+                    </div>
+                </div>
+                <div id="templatesListInverters" class="list grid-list"></div>
+            </div>
+        </section>
+
+        <!-- MODAL: CADASTRAR TÉCNICO -->
+        <div id="modalAddTech" class="modal">
+            <div class="modal-content large">
+                <div class="modal-header">
+                    <h2><i class="fas fa-user-cog"></i> Cadastrar Técnico</h2>
+                    <button type="button" class="close-btn" id="closeAddTechModal"><i class="fas fa-times"></i></button>
+                </div>
+                <form id="formAddTech" class="modal-body">
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Nome do Técnico</label>
+                        <input type="text" id="NomeTecnico" required placeholder="Ex: ENG. JOÃO DA SILVA">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-id-card"></i> Título</label>
+                        <input type="text" id="TituloTecnico" required placeholder="Ex: Engenheiro Eletricista">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-certificate"></i> Registro Profissional</label>
+                        <input type="text" id="RegistroTecnico" required placeholder="Ex: CREA 123456-PA">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-map-marker-alt"></i> UF</label>
+                        <input type="text" id="UfTecnico" maxlength="2" required placeholder="Ex: PA">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="EmailTecnico" required placeholder="Ex: joao@empresa.com">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-phone"></i> Telefone</label>
+                        <input type="text" id="TelefoneTecnico" placeholder="(XX) XXXX-XXXX">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-mobile-alt"></i> Celular</label>
+                        <input type="text" id="CelularTecnico" placeholder="(XX) 9XXXX-XXXX">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-fax"></i> Fax</label>
+                        <input type="text" id="faxTecnico" placeholder="(XX) XXXX-XXXX">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-road"></i> Endereço</label>
+                        <input type="text" id="EnderecoTecnico" placeholder="Rua / Avenida">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-city"></i> Bairro</label>
+                        <input type="text" id="BairroTecnico" placeholder="Bairro">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-building"></i> Município</label>
+                        <input type="text" id="MunicipioTecnico" placeholder="Cidade">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-flag"></i> UF</label>
+                        <input type="text" id="UfTecnico2" maxlength="2" placeholder="Ex: PA">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-mail-bulk"></i> CEP</label>
+                        <input type="text" id="CEPTecnico" placeholder="00000-000">
+                    </div>
+                    <div class="modal-actions">
+                        <button type="submit" class="save-btn"><i class="fas fa-save"></i> Salvar Técnico</button>
+                        <button type="button" class="cancel-btn" id="cancelAddTech"><i class="fas fa-times"></i> Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- MODAL: EDITAR TÉCNICO -->
+        <div id="modalEditTech" class="modal">
+            <div class="modal-content large">
+                <div class="modal-header">
+                    <h2><i class="fas fa-user-cog"></i> Editar Técnico</h2>
+                    <button type="button" class="close-btn" id="closeEditTechModal"><i class="fas fa-times"></i></button>
+                </div>
+                <form id="formEditTech" class="modal-body">
+                    <input type="hidden" id="editTechId">
+
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Nome do Técnico</label>
+                        <input type="text" id="editNomeTecnico" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-id-card"></i> Título</label>
+                        <input type="text" id="editTituloTecnico" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-certificate"></i> Registro Profissional</label>
+                        <input type="text" id="editRegistroTecnico" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-map-marker-alt"></i> UF</label>
+                        <input type="text" id="editUfTecnico" maxlength="2" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="editEmailTecnico">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-phone"></i> Telefone</label>
+                        <input type="text" id="editTelefoneTecnico">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-mobile-alt"></i> Celular</label>
+                        <input type="text" id="editCelularTecnico">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-fax"></i> Fax</label>
+                        <input type="text" id="editFaxTecnico">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-road"></i> Endereço</label>
+                        <input type="text" id="editEnderecoTecnico">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-city"></i> Bairro</label>
+                        <input type="text" id="editBairroTecnico">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-building"></i> Município</label>
+                        <input type="text" id="editMunicipioTecnico">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-flag"></i> UF</label>
+                        <input type="text" id="editUfTecnico2" maxlength="2">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-mail-bulk"></i> CEP</label>
+                        <input type="text" id="editCEPTecnico">
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="submit" class="save-btn"><i class="fas fa-save"></i> Salvar Alterações</button>
+                        <button type="button" class="cancel-btn" id="cancelEditTech">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- MODAL DE EDIÇÃO DE USUÁRIO -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-edit"></i> Editar Usuário</h2>
+                    <button type="button" id="closeModal" class="close-btn"><i class="fas fa-times"></i></button>
+                </div>
+
+                <form id="editUserForm" class="modal-body">
+                    <input type="hidden" id="editUserId">
+                    <div class="form-group">
+                        <label for="editName"><i class="fas fa-user"></i> Nome completo</label>
+                        <input type="text" id="editName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editEmail"><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="editEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editPassword"><i class="fas fa-lock"></i> Nova senha (opcional)</label>
+                        <input type="password" id="editPassword" placeholder="Deixe em branco para manter a atual">
+                    </div>
+                    <div class="form-checkbox">
+                        <label class="inline">
+                            <input type="checkbox" id="editIsAdmin">
+                            <span class="checkmark"></span>
+                            <i class="fas fa-crown"></i> Administrador
+                        </label>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="submit" class="save-btn"><i class="fas fa-save"></i> Salvar Alterações</button>
+                        <button type="button" id="cancelModal" class="cancel-btn"><i class="fas fa-times"></i> Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script src="/js/config.js"></script>
+        <script src="/js/integrations.js"></script>
+        <script src="/js/admin.js"></script>
+</body>
+
+</html>

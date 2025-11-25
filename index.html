@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário de Solicitação de Orçamento - Microgeração Distribuída</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -115,7 +115,8 @@
                             UNIDADE CONSUMIDORA COM GERAÇÃO DISTRIBUÍDA</option>
                         <option
                             value="CONEXÃO DE GD EM UNIDADE CONSUMIDORA EXISTENTE SEM AUMENTO DE POTÊNCIA DISPONIBILIZADA (ver item abaixo)">
-                            CONEXÃO DE GD EM UNIDADE CONSUMIDORA EXISTENTE SEM AUMENTO DE POTÊNCIA DISPONIBILIZADA (ver item abaixo)</option>
+                            CONEXÃO DE GD EM UNIDADE CONSUMIDORA EXISTENTE SEM AUMENTO DE POTÊNCIA DISPONIBILIZADA (ver
+                            item abaixo)</option>
                         <option
                             value="CONEXÃO DE GD EM UNIDADE CONSUMIDORA EXISTENTE COM AUMENTO DE POTÊNCIA DISPONIBILIZADA (ver item abaixo)">
                             CONEXÃO DE GD EM UNIDADE CONSUMIDORA EXISTENTE COM AUMENTO DE
@@ -178,8 +179,8 @@
                     </select>
                 </div>
                 <div class="form-group">
-                <label for="SecaoCondutorCA">SEÇÃO DO CONDUTOR CA</label>
-                <select id="SecaoCondutorCA" name="SecaoCondutorCA">
+                    <label for="SecaoCondutorCA">SEÇÃO DO CONDUTOR CA</label>
+                    <select id="SecaoCondutorCA" name="SecaoCondutorCA">
                         <option value="4 mm²">4 mm²</option>
                         <option value="6 mm²">6 mm²</option>
                         <option value="10 mm²">10 mm²</option>
@@ -196,7 +197,7 @@
                         <option value="300 mm²">300 mm²</option>
                         <option value="400 mm²">400 mm²</option>
                         <option value="500 mm²">500 mm²</option>
-                </select>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="TensaoIsolacao">Tensão de Isolação</label>
@@ -274,101 +275,21 @@
                 </div>
             </div>
 
-        <!-- Seção 2: Dados Cadastrais do Responsável Técnico -->
-        <div class="section-header" id="toggleTecnico" style="cursor:pointer; display:flex; align-items:center; justify-content:space-between;">
-        <span>2. Dados Cadastrais do Responsável Técnico</span>
-        <span id="setaTecnico" style="transition: transform 0.3s;">&#9654;</span> <!-- seta inicial apontando para a direita -->
-        </div>
+            <!-- Seção 2: Dados Cadastrais do Responsável Técnico -->
+            <div class="section-header" id="toggleTecnico"
+                style="cursor:pointer; display:flex; align-items:center; justify-content:space-between;">
+                <span>2. Responsável Técnico</span>
+                <span id="setaTecnico" style="transition: transform 0.3s;">&#9654;</span>
+            </div>
 
-        <div id="conteudoTecnico">
-        <div class="form-row">
+            <div id="conteudoTecnico">
                 <div class="form-group">
-                <label for="nomeTecnico">Nome Completo</label>
-                <input type="text" id="NomeTecnico" name="nomeTecnico" placeholder="Nome do responsável técnico">
+                    <label for="TecnicoResponsavel">Selecione o Técnico Responsável</label>
+                    <select id="TecnicoResponsavel" name="TecnicoResponsavel">
+                        <option value="">Carregando técnicos...</option>
+                    </select>
                 </div>
-                <div class="form-group">
-                <label for="tituloTecnico">Título Profissional</label>
-                <input type="text" id="TituloTecnico" name="tituloTecnico" placeholder="Título profissional">
-                </div>
-        </div>
-
-        <div class="form-row">
-                <div class="form-group">
-                <label for="RegistroTecnico">Registro Profissional - Nº</label>
-                <input type="text" id="RegistroTecnico" name="registroTecnico" placeholder="Número do registro">
-                </div>
-                <div class="form-group">
-                <label for="ufTecnico">UF</label>
-                <select id="UfTecnico" name="ufTecnico">
-                        <option value="">Selecione</option>
-                        <option value="PA">PA</option>
-                        <option value="MA">MA</option>
-                        <option value="PI">PI</option>
-                        <option value="AL">AL</option>
-                        <option value="RS">RS</option>
-                        <option value="AP">AP</option>
-                        <option value="GO">GO</option>
-                </select>
-                </div>
-        </div>
-
-        <div class="form-row">
-                <div class="form-group">
-                <label for="emailTecnico">E-mail</label>
-                <input type="email" id="EmailTecnico" name="emailTecnico" placeholder="email@exemplo.com">
-                </div>
-                <div class="form-group">
-                <label for="telefoneFixoTecnico">Telefone Fixo</label>
-                <input type="text" id="TelefoneTecnico" name="telefoneFixoTecnico" placeholder="(00) 0000-0000">
-                </div>
-        </div>
-
-        <div class="form-row">
-                <div class="form-group">
-                <label for="celularTecnico">Telefone Celular</label>
-                <input type="text" id="CelularTecnico" name="celularTecnico" placeholder="(00) 00000-0000">
-                </div>
-                <div class="form-group">
-                <label for="faxTecnico">Fax</label>
-                <input type="text" id="faxTecnico" name="faxTecnico" placeholder="(00) 0000-0000">
-                </div>
-        </div>
-
-        <div class="form-row">
-                <div class="form-group">
-                <label for="enderecoTecnico">Endereço de Correspondência</label>
-                <input type="text" id="EnderecoTecnico" name="enderecoTecnico" placeholder="Endereço completo">
-                </div>
-                <div class="form-group">
-                <label for="bairroTecnico">Bairro</label>
-                <input type="text" id="BairroTecnico" name="bairroTecnico" placeholder="Nome do bairro">
-                </div>
-        </div>
-
-        <div class="form-row">
-                <div class="form-group">
-                <label for="cidadeTecnico">Município</label>
-                <input type="text" id="MunicipioTecnico" name="cidadeTecnico" placeholder="Nome do município">
-                </div>
-                <div class="form-group">
-                <label for="ufTecnicoEndereco">UF</label>
-                <select id="UfTecnico2" name="ufTecnicoEndereco">
-                        <option value="">Selecione</option>
-                        <option value="PA">PA</option>
-                        <option value="MA">MA</option>
-                        <option value="PI">PI</option>
-                        <option value="AL">AL</option>
-                        <option value="RS">RS</option>
-                        <option value="AP">AP</option>
-                        <option value="GO">GO</option>
-                </select>
-                </div>
-                <div class="form-group">
-                <label for="cepTecnico">CEP</label>
-                <input type="text" id="CEPTecnico" name="cepTecnico" placeholder="00000-000">
-                </div>
-        </div>
-        </div>
+            </div>
 
             <!-- Seção 3: Características da Microgeração Distribuída -->
             <div class="section-title">3. Características da Microgeração Distribuída</div>
@@ -467,52 +388,69 @@
             <!-- 1. Solar Fotovoltaica -->
             <div class="ug-section">
                 <h3>1. Solar Fotovoltaica</h3>
-        <div class="compact-fields">
+
+                <!-- Drop list de Templates de Módulo -->
                 <div class="form-group">
-                <label for="Voc">Tensão de circuito aberto</label>
-                <input type="text" id="VocModulo" name="Voc" step="0.01">
+                    <label for="selectTemplateModulo">Selecionar Template</label>
+                    <select id="selectTemplateModulo">
+                        <option value="">-- Nenhum --</option>
+                        <!-- Opções serão preenchidas dinamicamente via JS -->
+                    </select>
                 </div>
 
+                <!-- Nome do Template do Módulo -->
                 <div class="form-group">
-                <label for="CorrenteDisjuntor">CORRENTE NOMINAL [A]:</label>
-                <input type="text" id="CorrenteDisjuntor" name="CorrenteDisjuntor">
+                    <label for="templateModuloName">Nome do Template</label>
+                    <input type="text" id="templateModuloName" name="templateModuloName" placeholder="Ex: Módulo Roof A">
                 </div>
 
-                <div class="form-group">
-                <label for="Isc">Corrente de curto-circuito</label>
-                <input type="text" id="IscModulo" name="Isc" step="0.01">
+                <div class="compact-fields">
+                    <div class="form-group">
+                        <label for="Voc">Tensão de circuito aberto</label>
+                        <input type="text" id="VocModulo" name="Voc" step="0.01">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="CorrenteDisjuntor">CORRENTE NOMINAL [A]:</label>
+                        <input type="text" id="CorrenteDisjuntor" name="CorrenteDisjuntor">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Isc">Corrente de curto-circuito</label>
+                        <input type="text" id="IscModulo" name="Isc" step="0.01">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Vpmp">Tensão de max potência</label>
+                        <input type="text" id="VpmpModulo" name="Vpmp" step="0.01">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Ipmp">Corrente de max potência</label>
+                        <input type="text" id="IpmpModulo" name="Ipmp" step="0.01">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Eficiencia">Eficiência [%]</label>
+                        <input type="text" id="EficienciaModulo" name="Eficiencia" step="0.01">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="LarguraModulo">Largura [mm]</label>
+                        <input type="number" id="LarguraModulo" name="LarguraModulo" step="0.001"
+                            placeholder="ex: 2177">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="AlturaModulo">Altura [mm]</label>
+                        <input type="number" id="AlturaModulo" name="AlturaModulo" step="0.001" placeholder="ex: 1303">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PesoModulo">Peso [kg]</label>
+                        <input type="number" id="PesoModulo" name="PesoModulo" step="0.001" placeholder="ex: 15,00">
+                    </div>
                 </div>
-
-                <div class="form-group">
-                <label for="Vpmp">Tensão de max potência</label>
-                <input type="text" id="VpmpModulo" name="Vpmp" step="0.01">
-                </div>
-
-                <div class="form-group">
-                <label for="Ipmp">Corrente de max potência</label>
-                <input type="text" id="IpmpModulo" name="Ipmp" step="0.01">
-                </div>
-
-                <div class="form-group">
-                <label for="Eficiencia">Eficiência [%]</label>
-                <input type="text" id="EficienciaModulo" name="Eficiencia" step="0.01">
-                </div>
-
-                <div class="form-group">
-                <label for="LarguraModulo">Largura [mm]</label>
-                <input type="number" id="LarguraModulo" name="LarguraModulo" step="0.001" placeholder="ex: 2177">
-            </div>
-
-            <div class="form-group">
-                <label for="AlturaModulo">Altura [mm]</label>
-                <input type="number" id="AlturaModulo" name="AlturaModulo" step="0.001" placeholder="ex: 1303">
-            </div>
-
-            <div class="form-group">
-                <label for="PesoModulo">Peso [kg]</label>
-                <input type="number" id="PesoModulo" name="PesoModulo" step="0.001" placeholder="ex: 15,00">
-            </div>
-        </div>
                 <div class="table-container">
 
                     <table class="ug-table">
@@ -532,8 +470,8 @@
                                 <td>1</td>
                                 <td><input type="text" id="PotenciaModulo1" name="PotenciaModulo1" placeholder="W">
                                 </td>
-                                <td><input type="text" id="QuantidadeValor1" name="QuantidadeValor1"
-                                        placeholder="Qtd"></td>
+                                <td><input type="text" id="QuantidadeValor1" name="QuantidadeValor1" placeholder="Qtd">
+                                </td>
                                 <td><input type="text" step="0.01" id="PotenciaValor1" name="PotenciaValor1"
                                         placeholder="kWp"></td>
                                 <td><input type="text" step="0.01" id="AreaValor1" name="AreaValor1" placeholder="m²">
@@ -543,16 +481,19 @@
                                 <td><input type="text" id="ModeloModulo1" name="ModeloModulo1" placeholder="Modelo">
                                 </td>
                             </tr>
-                            <tfoot>
-                                <tr>
+                        <tfoot>
+                            <tr>
                                 <td>TOTAL</td>
                                 <td></td>
-                                <td><input type="text" step="0.01" id="QtdModulo" name="quantidadeTotal" placeholder="Qtd Total"></td>
-                                <td><input type="text" id="PotenciaPico" name="potenciaPicoTotal" placeholder="Total kWp"></td>
-                                <td><input type="text" step="0.01" id="AreaModulo" name="areaArranjoTotal" placeholder="Total m²"></td>
+                                <td><input type="text" step="0.01" id="QtdModulo" name="quantidadeTotal"
+                                        placeholder="Qtd Total"></td>
+                                <td><input type="text" id="PotenciaPico" name="potenciaPicoTotal"
+                                        placeholder="Total kWp"></td>
+                                <td><input type="text" step="0.01" id="AreaModulo" name="areaArranjoTotal"
+                                        placeholder="Total m²"></td>
                                 <td></td>
                                 <td></td>
-                                </tr>
+                            </tr>
                         </tfoot>
                     </table>
                 </div>
@@ -575,51 +516,66 @@
             <div class="ug-section">
                 <h3>2. Dados dos Inversores</h3>
 
-                <div class="compact-fields">
+                <!-- Drop list de Templates de Inversor -->
                 <div class="form-group">
+                    <label for="selectTemplateInversor">Selecionar Template</label>
+                    <select id="selectTemplateInversor">
+                        <option value="">-- Nenhum --</option>
+                        <!-- Opções serão preenchidas dinamicamente via JS -->
+                    </select>
+                </div>
+
+                <!-- Nome do Template do Inversor -->
+                <div class="form-group">
+                    <label for="templateInversorName">Nome do Template</label>
+                    <input type="text" id="templateInversorName" name="templateInversorName" placeholder="Ex: Inversor Trifásico 10kW">
+                </div>
+
+                <div class="compact-fields">
+                    <div class="form-group">
                         <label for="PmaxCC">MAX potência na entrada CC</label>
                         <input type="text" id="PmaxCCInversor" name="PmaxCC">
-                </div>
+                    </div>
 
-                <div class="form-group">
+                    <div class="form-group">
                         <label for="VccMax">MAX tensão CC – Vcc-máx [V]</label>
                         <input type="text" id="VccMaxInversor" name="VccMax">
-                </div>
+                    </div>
 
-                <div class="form-group">
+                    <div class="form-group">
                         <label for="IccMax">MAX corrente MPPT CC – Icc-máx [A]</label>
                         <input type="text" id="IccMaxInversor" name="IccMax">
-                </div>
+                    </div>
 
-                <div class="form-group">
+                    <div class="form-group">
                         <label for="VpmpMPPT">Faixa de tensão MPPT – Vpmp [V]</label>
                         <input type="text" id="VpmpMPPTInversor" name="VpmpMPPT">
-                </div>
+                    </div>
 
-                <div class="form-group">
+                    <div class="form-group">
                         <label for="VccPart">Tensão CC de partida – Vcc-part [V]</label>
                         <input type="text" id="VccPartInversor" name="VccPart">
-                </div>
+                    </div>
 
-                <div class="form-group">
+                    <div class="form-group">
                         <label for="QtdEntradasMPPT">Quantidade de entradas MPPT</label>
                         <input type="text" id="QtdEntradasMPPTInversor" name="QtdEntradasMPPT">
-                </div>
+                    </div>
 
-                <div class="form-group">
+                    <div class="form-group">
                         <label for="StringsMPPT">Strings por MPPT</label>
                         <input type="text" id="StringsMPPTInversor" name="StringsMPPT">
-                </div>
+                    </div>
 
-                <div class="form-group">
+                    <div class="form-group">
                         <label for="FrequenciaNominal">Frequência nominal – Fn [Hz]</label>
                         <input type="text" id="FrequenciaNominalInversor" name="FrequenciaNominal">
-                </div>
+                    </div>
 
-                <div class="form-group">
+                    <div class="form-group">
                         <label for="EficienciaMaxima">Eficiência máxima [%]</label>
                         <input type="text" id="EficienciaMaximaInversor" name="EficienciaMaxima">
-                </div>
+                    </div>
                 </div>
 
                 <div class="table-container2">
@@ -664,8 +620,8 @@
                                 <td>TOTAL</td>
                                 <td></td>
                                 <td></td>
-                                <td><input type="text" step="0.01" name="potenciaInversorTotal" id="PotenciaInversorTotal"
-                                        placeholder="Total kW"></td>
+                                <td><input type="text" step="0.01" name="potenciaInversorTotal"
+                                        id="PotenciaInversorTotal" placeholder="Total kW"></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -695,7 +651,7 @@
         </form>
     </div>
 
-    <script src="script.js"></script>
+    <script type="module" src="/js/script.js"></script>
 </body>
 
 </html>
