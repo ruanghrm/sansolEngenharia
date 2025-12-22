@@ -1,4 +1,4 @@
-import { API_URL, token } from './config2.js';
+import { API_URL, token } from './config.js';
 
 window.addEventListener("DOMContentLoaded", () => {
     const totalPotencia = document.getElementById("PotenciaPico");

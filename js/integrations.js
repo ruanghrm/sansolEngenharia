@@ -1,3 +1,5 @@
+import { API_URL, token } from "./config.js";
+
 console.log("✔ integrations.js carregado");
 
 // ===================================================================
@@ -218,7 +220,7 @@ document.getElementById("formEditTech").addEventListener("submit", async (e) => 
 
 async function loadTemplates() {
     try {
-        const res = await fetch(`${API_URL}/templates`, {
+        const res = await fetch(`${API_URL}/templates/`, {
             headers: { Authorization: `Bearer ${token}` }
         });
 

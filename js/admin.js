@@ -1,3 +1,6 @@
+import { API_URL, token } from "./config.js";
+
+
 if (!token) window.location.href = "login.html";
 
 /* -------------------------
