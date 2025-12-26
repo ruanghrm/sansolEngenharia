@@ -1,4 +1,4 @@
-const API_URL = "http://69.62.91.145:7899";
+const API_URL = "https://api.quantumprojects.com.br";
 
 document.getElementById("loginForm").addEventListener("submit", async (event) => {
     event.preventDefault();
