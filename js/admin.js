@@ -187,7 +187,7 @@ document.getElementById("editUserForm").addEventListener("submit", async (e) => 
    TEMPLATES
 ------------------------- */
 async function loadTemplates() {
-    const res = await fetch(`${API_URL}/templates`, {
+    const res = await fetch(`${API_URL}/templates/`, {
         headers: { Authorization: `Bearer ${token}` }
     });
 

@@ -552,7 +552,7 @@ document.getElementById("orcamentoForm").addEventListener("submit", function (ev
 
     console.log("JSON a enviar:", jsonData);
 
-    fetch("http://69.62.91.145:7899/render?type=both", {
+    fetch("https://api.quantumprojects.com.br/render?type=both", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(jsonData)
@@ -652,7 +652,7 @@ let templatesCache = [];
 
 async function populateTemplateDropdowns() {
     try {
-        const res = await fetch(`${API_URL}/templates`, {
+        const res = await fetch(`${API_URL}/templates/`, {
             headers: { Authorization: `Bearer ${token}` }
         });
 
